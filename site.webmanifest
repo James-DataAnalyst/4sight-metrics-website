@@ -1,0 +1,17 @@
+{
+  "name": "4Sight Metrics",
+  "short_name": "4Sight",
+  "description": "Decision-ready business intelligence for finance and operations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06111f",
+  "theme_color": "#06111f",
+  "icons": [
+    {
+      "src": "assets/brand/favicon.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
