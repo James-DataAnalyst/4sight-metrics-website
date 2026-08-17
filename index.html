@@ -92,9 +92,7 @@
           <a href="#glimpse">Glimpse</a>
           <a href="#work">Cases</a>
           <a href="#process">Process</a>
-          <a href="#contact" class="nav-cta">
-            Book a call <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-          </a>
+          <a href="#contact" class="nav-cta"> Contact </a>
         </nav>
       </div>
     </header>
@@ -106,7 +104,7 @@
           <div class="hero-copy reveal is-visible">
             <div class="eyebrow">
               <span class="eyebrow-dot"></span>
-              BI For Decisive teams
+              BUSINESS CLARITY FOR GROWING COMPANIES
             </div>
 
             <h1 id="hero-title">
@@ -115,13 +113,14 @@
             </h1>
 
             <p>
-              We turn disconnected financial and operational data into clear
-              dashboards, meaningful metrics, and better business decisions.
+              We bring your financial and operational data together in one clear
+              view, so you can understand what is driving performance, spot
+              problems earlier, and make better decisions
             </p>
 
             <div class="hero-actions">
               <a class="button button-primary" href="#contact">
-                Book a call
+                Get Started
                 <i data-lucide="arrow-up-right" aria-hidden="true"></i>
               </a>
 
@@ -136,168 +135,282 @@
             class="hero-visual reveal reveal-delay is-visible"
             id="hero-experience"
           >
-            <!-- Animated signal rings -->
-            <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
-            <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
-
             <div class="hero-stage">
               <div
-                class="hero-photo"
-                data-hero-slideshow
-                aria-label="How 4Sight Metrics turns data into decisions"
+                class="intelligence-flow"
+                aria-label="Business data connected through Power BI and Microsoft Fabric into decision-ready reporting"
               >
-                <div class="hero-slides">
-                  <figure
-                    class="hero-slide is-active"
-                    data-hero-slide
-                    aria-hidden="false"
+                <!-- Top status bar -->
+                <!-- <div class="flow-topbar">
+                  <div>
+                    <span class="flow-status-dot"></span>
+                    <strong>4Sight Intelligence Flow</strong>
+                  </div>
+
+                  <span class="flow-live-status">
+                    <i></i>
+                    Connected
+                  </span>
+                </div> -->
+
+                <div class="flow-canvas">
+                  <!-- Animated connecting lines -->
+                  <svg
+                    class="flow-map"
+                    viewBox="0 0 760 500"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
                   >
-                    <picture>
-                      <!-- Image 1 -->
-                      <source
-                        srcset="assets/images/hero/leadership-alignment.webp"
-                        type="image/webp"
-                      />
-                      <img
-                        src="assets/images/hero/leadership-alignment.png"
-                        alt="A business team reviewing performance data together"
-                        width="1448"
-                        height="1086"
-                        fetchpriority="high"
-                        decoding="async"
-                      />
-                    </picture>
-                  </figure>
+                    <defs>
+                      <linearGradient id="flow-gradient" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#2684ff"></stop>
+                        <stop offset="52%" stop-color="#26d9ff"></stop>
+                        <stop offset="100%" stop-color="#55f1c8"></stop>
+                      </linearGradient>
 
-                  <figure class="hero-slide" data-hero-slide aria-hidden="true">
-                    <picture>
-                      <!-- Image 2 -->
-                      <source
-                        srcset="assets/images/hero/team-reviewing-insights.webp"
-                        type="image/webp"
-                      />
-                      <img
-                        src="assets/images/hero/team-reviewing-insights.png"
-                        alt="Business leaders discussing the next strategic decision"
-                        width="1448"
-                        height="1086"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </picture>
-                  </figure>
+                      <filter id="flow-glow">
+                        <feGaussianBlur
+                          stdDeviation="3"
+                          result="blur"
+                        ></feGaussianBlur>
+                        <feMerge>
+                          <feMergeNode in="blur"></feMergeNode>
+                          <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
+                      </filter>
+                    </defs>
 
-                  <figure class="hero-slide" data-hero-slide aria-hidden="true">
-                    <picture>
-                      <!-- Image 3 -->
-                      <source
-                        srcset="assets/images/hero/hero-4sight-command.webp"
-                        type="image/webp"
-                      />
-                      <img
-                        src="assets/images/hero/hero-4sight-command.png"
-                        alt="An operations team reviewing performance during a warehouse walkthrough"
-                        width="1448"
-                        height="1086"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </picture>
-                  </figure>
+                    <!-- Background paths -->
+                    <path
+                      class="flow-path-base"
+                      d="M187 162 C211 162 219 218 238 235"
+                    ></path>
 
-                  <figure class="hero-slide" data-hero-slide aria-hidden="true">
-                    <picture>
-                      <!-- Image 4 -->
-                      <source
-                        srcset="assets/images/hero/hero-leader-review.webp"
-                        type="image/webp"
-                      />
-                      <img
-                        src="assets/images/hero/hero-leader-review.png"
-                        alt="A business leader reviewing performance insights at her desk"
-                        width="1448"
-                        height="1086"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </picture>
-                  </figure>
+                    <path
+                      class="flow-path-base"
+                      d="M187 235 C210 235 220 242 238 250"
+                    ></path>
+
+                    <path
+                      class="flow-path-base"
+                      d="M187 309 C210 309 220 282 238 270"
+                    ></path>
+
+                    <path
+                      class="flow-path-base"
+                      d="M187 383 C211 383 220 306 238 285"
+                    ></path>
+
+                    <!-- Intelligence layer to decision view -->
+                    <path
+                      class="flow-path-base flow-path-base-output"
+                      d="M360 350 C395 405 468 430 535 425 C590 421 625 395 646 350"
+                    ></path>
+
+                    <!-- Animated signal paths -->
+                    <path
+                      class="flow-path-signal flow-delay-1"
+                      d="M187 162 C211 162 219 218 238 235"
+                    ></path>
+
+                    <path
+                      class="flow-path-signal flow-delay-2"
+                      d="M187 235 C210 235 220 242 238 250"
+                    ></path>
+
+                    <path
+                      class="flow-path-signal flow-delay-3"
+                      d="M187 309 C210 309 220 282 238 270"
+                    ></path>
+
+                    <path
+                      class="flow-path-signal flow-delay-4"
+                      d="M187 383 C211 383 220 306 238 285"
+                    ></path>
+
+                    <!-- Animated intelligence layer to decision view -->
+                    <path
+                      class="flow-path-signal flow-path-output"
+                      d="M360 350 C395 405 468 430 535 425 C590 421 625 395 646 350"
+                    ></path>
+                  </svg>
+
+                  <!-- Stage 01: Data sources -->
+                  <section class="flow-sources">
+                    <div class="flow-section-title">
+                      <span>01</span>
+                      <p>Business data</p>
+                    </div>
+
+                    <div class="source-list">
+                      <div class="source-node">
+                        <span class="source-logo">
+                          <img
+                            src="assets/icons/tools/excel.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                          />
+                        </span>
+
+                        <span>
+                          <strong>Excel</strong>
+                          <small>Operational files</small>
+                        </span>
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo">
+                          <img
+                            src="assets/icons/tools/sql.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                          />
+                        </span>
+
+                        <span>
+                          <strong>SQL</strong>
+                          <small>Business databases</small>
+                        </span>
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo">
+                          <img
+                            src="assets/icons/tools/azure.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                          />
+                        </span>
+
+                        <span>
+                          <strong>Azure</strong>
+                          <small>Cloud systems</small>
+                        </span>
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo">
+                          <img
+                            src="assets/icons/tools/snowflake.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                          />
+                        </span>
+
+                        <span>
+                          <strong>Snowflake</strong>
+                          <small>Data warehouse</small>
+                        </span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- Stage 02: Intelligence layer -->
+                  <section class="flow-engine">
+                    <div class="flow-section-title">
+                      <span>02</span>
+                      <p>Intelligence layer</p>
+                    </div>
+
+                    <div class="engine-core">
+                      <span class="engine-ring engine-ring-one"></span>
+                      <span class="engine-ring engine-ring-two"></span>
+
+                      <div class="engine-logos">
+                        <div>
+                          <img
+                            src="assets/icons/tools/power-bi.svg"
+                            alt="Power BI"
+                            width="42"
+                            height="42"
+                          />
+                          <small>Power BI</small>
+                        </div>
+
+                        <span class="engine-divider"></span>
+
+                        <div>
+                          <img
+                            src="assets/icons/tools/microsoft-fabric.svg"
+                            alt="Microsoft Fabric"
+                            width="42"
+                            height="42"
+                          />
+                          <small>Fabric</small>
+                        </div>
+                      </div>
+
+                      <strong>Trusted intelligence</strong>
+                      <p>Model · Govern · Refresh</p>
+                    </div>
+                  </section>
+
+                  <!-- Stage 03: Reporting output -->
+                  <section class="flow-output">
+                    <div class="flow-section-title">
+                      <span>03</span>
+                      <p>Decision view</p>
+                    </div>
+
+                    <div class="report-window">
+                      <div class="report-window-bar">
+                        <div>
+                          <i></i>
+                          <i></i>
+                          <i></i>
+                        </div>
+
+                        <span>
+                          <i></i>
+                          Live report
+                        </span>
+                      </div>
+
+                      <div class="report-preview">
+                        <img
+                          src="assets/images/hero/display.webp"
+                          alt="Executive performance dashboard generated from connected business data"
+                          width="1600"
+                          height="900"
+                          fetchpriority="high"
+                          decoding="async"
+                        />
+
+                        <div class="report-preview-status">
+                          <span>
+                            <i></i>
+                            Data refreshed
+                          </span>
+
+                          <strong>Decision ready</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="report-outcomes">
+                      <span>One trusted view</span>
+                      <span>Clear KPIs</span>
+                    </div>
+                  </section>
                 </div>
-
-                <!-- Subtle intelligence effects -->
-                <div class="hero-photo-grid" aria-hidden="true"></div>
-
-                <div class="hero-pointer-light" aria-hidden="true"></div>
-
-                <div class="hero-pagination" aria-label="Choose hero image">
-                  <button
-                    class="is-active"
-                    type="button"
-                    data-hero-dot="0"
-                    aria-label="Show image 1 of 4"
-                    aria-current="true"
-                  ></button>
-                  <button
-                    type="button"
-                    data-hero-dot="1"
-                    aria-label="Show image 2 of 4"
-                  ></button>
-                  <button
-                    type="button"
-                    data-hero-dot="2"
-                    aria-label="Show image 3 of 4"
-                  ></button>
-                  <button
-                    type="button"
-                    data-hero-dot="3"
-                    aria-label="Show image 4 of 4"
-                  ></button>
-                </div>
-              </div>
-
-              <!-- Floating proof card one -->
-              <div class="hero-proof hero-proof-top">
-                <span class="hero-proof-icon">
-                  <i data-lucide="waypoints" aria-hidden="true"></i>
-                </span>
-
-                <span class="hero-proof-copy">
-                  <small>Connected intelligence</small>
-                  <strong>One trusted view</strong>
-                </span>
-              </div>
-
-              <!-- Floating proof card two -->
-              <div class="hero-proof hero-proof-bottom">
-                <span class="hero-proof-icon">
-                  <i data-lucide="focus" aria-hidden="true"></i>
-                </span>
-
-                <span class="hero-proof-copy">
-                  <small>Decision ready</small>
-                  <strong>Clarity where it matters</strong>
-                </span>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="hero-bottom container"
-          role="group"
-          aria-label="Our approach"
+          class="hero-tools container"
+          aria-label="Technology platforms we work with"
         >
-          <span>Strategy</span><i></i><span>Data</span><i></i><span>Design</span
-          ><i></i><span>Decisions</span>
-        </div>
-      </section>
+          <div class="marquee-fade marquee-fade-left" aria-hidden="true"></div>
 
-      <section
-        class="tool-marquee"
-        aria-label="Technology platforms we work with"
-      >
-        <div class="marquee-fade marquee-fade-left" aria-hidden="true"></div>
-        <div class="marquee-track" id="tool-marquee"></div>
-        <div class="marquee-fade marquee-fade-right" aria-hidden="true"></div>
+          <div class="marquee-track" id="tool-marquee"></div>
+
+          <div class="marquee-fade marquee-fade-right" aria-hidden="true"></div>
+        </div>
       </section>
 
       <section

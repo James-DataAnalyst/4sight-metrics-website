@@ -46,7 +46,7 @@
           .map(
             (tool) => `
           <span class="tool">
-            <span class="tool-logo"><img src="${escapeHTML(tool.icon)}" alt="" /></span>
+            <span class="tool-logo"><img src="${escapeHTML(tool.heroIcon || tool.icon)}" alt="" /></span>
             <span>${escapeHTML(tool.name)}</span>
           </span>
         `,
@@ -1134,107 +1134,4 @@
 
   visual.addEventListener("pointermove", updateHero);
   visual.addEventListener("pointerleave", resetHero);
-})();
-
-/* =========================================================
-   HERO PHOTO STORY
-   ========================================================= */
-
-(() => {
-  "use strict";
-
-  const slideshow = document.querySelector("[data-hero-slideshow]");
-  if (!slideshow) return;
-
-  const slides = [...slideshow.querySelectorAll("[data-hero-slide]")];
-  const dots = [...slideshow.querySelectorAll("[data-hero-dot]")];
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-
-  if (slides.length < 2) return;
-
-  const interval = 5500;
-  let current = 0;
-  let timer = null;
-  let isVisible = true;
-  let isPaused = false;
-
-  const showSlide = (nextIndex) => {
-    current = (nextIndex + slides.length) % slides.length;
-
-    slides.forEach((slide, index) => {
-      const active = index === current;
-      slide.classList.toggle("is-active", active);
-      slide.setAttribute("aria-hidden", String(!active));
-    });
-
-    dots.forEach((dot, index) => {
-      const active = index === current;
-      dot.classList.toggle("is-active", active);
-
-      if (active) dot.setAttribute("aria-current", "true");
-      else dot.removeAttribute("aria-current");
-    });
-  };
-
-  const stop = () => {
-    window.clearInterval(timer);
-    timer = null;
-  };
-
-  const start = () => {
-    stop();
-
-    if (reducedMotion || isPaused || !isVisible || document.hidden) return;
-
-    timer = window.setInterval(() => {
-      showSlide(current + 1);
-    }, interval);
-  };
-
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      showSlide(Number(dot.dataset.heroDot));
-      start();
-    });
-  });
-
-  slideshow.addEventListener("pointerenter", () => {
-    isPaused = true;
-    stop();
-  });
-
-  slideshow.addEventListener("pointerleave", () => {
-    isPaused = false;
-    start();
-  });
-
-  slideshow.addEventListener("focusin", () => {
-    isPaused = true;
-    stop();
-  });
-
-  slideshow.addEventListener("focusout", (event) => {
-    if (slideshow.contains(event.relatedTarget)) return;
-    isPaused = false;
-    start();
-  });
-
-  document.addEventListener("visibilitychange", start);
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        start();
-      },
-      { threshold: 0.2 },
-    );
-
-    observer.observe(slideshow);
-  }
-
-  showSlide(0);
-  start();
 })();

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="SQL database monochrome icon">
+  <ellipse cx="24" cy="10" rx="15" ry="6" fill="#B7C6D2"/>
+  <path d="M9 10v10c0 3.3 6.7 6 15 6s15-2.7 15-6V10c0 3.3-6.7 6-15 6S9 13.3 9 10Z" fill="#8FA4B5"/>
+  <path d="M9 20v10c0 3.3 6.7 6 15 6s15-2.7 15-6V20c0 3.3-6.7 6-15 6S9 23.3 9 20Z" fill="#748A9B"/>
+  <path d="M9 30v8c0 3.3 6.7 6 15 6s15-2.7 15-6v-8c0 3.3-6.7 6-15 6S9 33.3 9 30Z" fill="#647B8E"/>
+  <path d="M14 20.2c2.8 1.2 6.2 1.8 10 1.8s7.2-.6 10-1.8M14 30.2c2.8 1.2 6.2 1.8 10 1.8s7.2-.6 10-1.8" fill="none" stroke="#D7E1E8" stroke-width="1.5" opacity=".8"/>
+</svg>

@@ -13,18 +13,51 @@
 
 window.SITE_DATA = {
   tools: [
-    { name: "Power BI", icon: "assets/icons/tools/power-bi.svg" },
+    {
+      name: "Excel",
+      icon: "assets/icons/tools/excel.svg",
+      heroIcon: "assets/icons/tools/gray/excel-gray.svg",
+    },
+    {
+      name: "Azure",
+      icon: "assets/icons/tools/azure.svg",
+      heroIcon: "assets/icons/tools/gray/azure-gray.svg",
+    },
+    {
+      name: "Snowflake",
+      icon: "assets/icons/tools/snowflake.svg",
+      heroIcon: "assets/icons/tools/gray/snowflake-gray.svg",
+    },
+    {
+      name: "Databricks",
+      icon: "assets/icons/tools/databricks.svg",
+      heroIcon: "assets/icons/tools/gray/databricks-gray.svg",
+    },
+    {
+      name: "Deneb",
+      icon: "assets/icons/tools/deneb.svg",
+      heroIcon: "assets/icons/tools/gray/deneb-gray.svg",
+    },
+    {
+      name: "PostgreSQL",
+      icon: "assets/icons/tools/postgresql.svg",
+      heroIcon: "assets/icons/tools/gray/postgresql-gray.svg",
+    },
+    {
+      name: "Power BI",
+      icon: "assets/icons/tools/power-bi.svg",
+      heroIcon: "assets/icons/tools/gray/power-bi-gray.svg",
+    },
     {
       name: "Microsoft Fabric",
       icon: "assets/icons/tools/microsoft-fabric.svg",
+      heroIcon: "assets/icons/tools/gray/microsoft-fabric-gray.svg",
     },
-    { name: "SQL", icon: "assets/icons/tools/sql.svg" },
-    { name: "Azure", icon: "assets/icons/tools/azure.svg" },
-    { name: "Excel", icon: "assets/icons/tools/excel.svg" },
-    { name: "Snowflake", icon: "assets/icons/tools/snowflake.svg" },
-    { name: "Databricks", icon: "assets/icons/tools/databricks.svg" },
-    { name: "Deneb", icon: "assets/icons/tools/deneb.svg" },
-    { name: "PostgreSQL", icon: "assets/icons/tools/postgresql.svg" },
+    {
+      name: "SQL",
+      icon: "assets/icons/tools/sql.svg",
+      heroIcon: "assets/icons/tools/gray/sql-gray.svg",
+    },
   ],
 
   services: [

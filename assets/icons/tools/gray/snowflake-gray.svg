@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Snowflake monochrome icon">
+  <g fill="none" stroke="#8FA4B5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 5v38M7.5 14.5l33 19M7.5 33.5l33-19"/>
+    <path d="m18.7 9.7 5.3 4.5 5.3-4.5M18.7 38.3l5.3-4.5 5.3 4.5M8.8 21.5l6.5-2.2-1.2-6.8M39.2 26.5l-6.5 2.2 1.2 6.8M14.1 35.5l1.2-6.8-6.5-2.2M33.9 12.5l-1.2 6.8 6.5 2.2"/>
+  </g>
+  <circle cx="24" cy="24" r="4" fill="#B7C6D2"/>
+</svg>
