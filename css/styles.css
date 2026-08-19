@@ -2598,475 +2598,257 @@ blockquote {
   }
 }
 /* ==================================================
-   CONTACT — CALENDLY BOOKING SECTION
+   CONTACT — SIMPLE CALENDLY BOOKING
    ================================================== */
 
 .contact-section {
   position: relative;
-  padding: 120px 0;
+  padding: 118px 0;
   overflow: hidden;
 
   color: var(--white);
 
   background:
     radial-gradient(
-      circle at 82% 25%,
-      rgba(0, 153, 255, 0.13),
-      transparent 28%
+      circle at 50% 110%,
+      rgba(0, 194, 243, 0.1),
+      transparent 37%
     ),
     linear-gradient(145deg, #06111f, #092039);
 }
 
 .contact-glow {
   position: absolute;
-  width: 540px;
-  height: 540px;
-  left: -280px;
-  bottom: -290px;
+  width: 500px;
+  height: 500px;
+  top: -320px;
+  left: 50%;
 
   border-radius: 50%;
-  background: rgba(0, 194, 243, 0.075);
-  filter: blur(80px);
+  background: rgba(0, 194, 243, 0.08);
+  filter: blur(85px);
+  transform: translateX(-50%);
   pointer-events: none;
 }
 
-.contact-shell {
+.contact-simple {
   position: relative;
-
-  display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(480px, 1.14fr);
-  gap: clamp(70px, 8vw, 120px);
-  align-items: center;
+  max-width: 920px;
+  text-align: center;
 }
 
-/* Left content */
+.contact-copy {
+  max-width: 790px;
+  margin-inline: auto;
+}
 
 .contact-copy h2 {
-  max-width: 570px;
+  max-width: 790px;
+  margin: 18px auto 0;
+
   color: var(--white);
+  font-size: clamp(45px, 5vw, 70px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
 }
 
 .contact-copy > p {
-  max-width: 530px;
-  margin: 27px 0 39px;
+  max-width: 610px;
+  margin: 25px auto 0;
 
-  color: #9fb3c5;
+  color: #9db1c3;
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
-.contact-call-wrap {
-  max-width: 440px;
-}
+/* Main booking card */
 
-.contact-call-wrap > span {
-  display: block;
-  margin-bottom: 11px;
+.booking-card-simple {
+  max-width: 860px;
+  min-height: 120px;
+  margin: 47px auto 0;
+  padding: 24px 25px;
 
-  color: #66839a;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.contact-call {
-  min-height: 72px;
-  padding: 13px 15px;
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  border: 1px solid rgba(103, 184, 219, 0.18);
+  border-radius: 20px;
 
   display: grid;
-  grid-template-columns: 42px 1fr 20px;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 13px;
+  gap: 17px;
 
-  background: rgba(255, 255, 255, 0.035);
-
-  transition:
-    border-color 0.25s ease,
-    background 0.25s ease,
-    transform 0.25s ease;
-}
-
-.contact-call:hover {
-  border-color: rgba(83, 220, 250, 0.35);
-  background: rgba(0, 194, 243, 0.065);
-  transform: translateY(-2px);
-}
-
-.contact-call-icon {
-  width: 42px;
-  height: 42px;
-
-  border: 1px solid rgba(83, 220, 250, 0.15);
-  border-radius: 11px;
-
-  display: grid;
-  place-items: center;
-
-  color: #55dcfa;
-  background: rgba(0, 194, 243, 0.08);
-}
-
-.contact-call-icon svg {
-  width: 17px;
-  height: 17px;
-}
-
-.contact-call-copy {
-  min-width: 0;
-}
-
-.contact-call-copy small,
-.contact-call-copy strong {
-  display: block;
-}
-
-.contact-call-copy small {
-  margin-bottom: 3px;
-
-  color: #69849a;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.contact-call-copy strong {
-  color: #eaf6fc;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.contact-call-arrow {
-  width: 16px;
-  color: #55dcfa;
-  transition: transform 0.2s ease;
-}
-
-.contact-call:hover .contact-call-arrow {
-  transform: translate(2px, -2px);
-}
-
-/* Calendly card */
-
-.booking-card {
-  position: relative;
-  padding: 36px;
-  overflow: hidden;
-
-  border: 1px solid rgba(113, 181, 216, 0.18);
-  border-radius: 25px;
+  text-align: left;
 
   background:
     radial-gradient(
       circle at 100% 0%,
-      rgba(0, 194, 243, 0.11),
-      transparent 34%
+      rgba(0, 194, 243, 0.09),
+      transparent 35%
     ),
-    linear-gradient(145deg, rgba(20, 45, 69, 0.88), rgba(12, 31, 50, 0.94));
+    rgba(255, 255, 255, 0.045);
 
   box-shadow:
-    0 32px 75px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    0 25px 60px rgba(0, 0, 0, 0.23),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
-.booking-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 36px;
-  left: 36px;
-  height: 2px;
+.booking-simple-icon {
+  width: 54px;
+  height: 54px;
 
-  border-radius: 0 0 999px 999px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 194, 243, 0.1),
-    #53dcfa,
-    rgba(0, 194, 243, 0.1)
-  );
-}
-
-.booking-card-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.booking-icon {
-  width: 46px;
-  height: 46px;
-  flex: 0 0 auto;
-
-  border: 1px solid rgba(83, 220, 250, 0.16);
-  border-radius: 13px;
+  border: 1px solid rgba(83, 220, 250, 0.17);
+  border-radius: 14px;
 
   display: grid;
   place-items: center;
 
   color: #55dcfa;
-  background: rgba(0, 194, 243, 0.08);
+  background: rgba(0, 194, 243, 0.075);
 }
 
-.booking-icon svg {
-  width: 20px;
-  height: 20px;
+.booking-simple-icon svg {
+  width: 21px;
+  height: 21px;
 }
 
-.booking-card-top > div {
+.booking-simple-copy {
   min-width: 0;
 }
 
-.booking-card-top > div span,
-.booking-card-top > div strong {
+.booking-simple-copy > span {
   display: block;
-}
+  margin-bottom: 6px;
 
-.booking-card-top > div span {
-  margin-bottom: 2px;
-
-  color: #718da3;
+  color: #55dcfa;
   font-size: 8px;
   font-weight: 800;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
-.booking-card-top > div strong {
-  color: #edf8fd;
-  font-size: 14px;
-}
-
-.booking-status {
-  min-height: 27px;
-  margin-left: auto;
-  padding: 0 10px;
-
-  border: 1px solid rgba(83, 220, 250, 0.13);
-  border-radius: 999px;
-
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-
-  color: #9db4c6;
-  background: rgba(0, 194, 243, 0.04);
-
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-.booking-status i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #4ddaae;
-  box-shadow: 0 0 0 3px rgba(77, 218, 174, 0.09);
-}
-
-/* Booking copy */
-
-.booking-card-copy {
-  margin-top: 30px;
-}
-
-.booking-kicker {
-  display: block;
-  margin-bottom: 10px;
-
-  color: #54dafa;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.booking-card-copy h3 {
-  max-width: 490px;
-  margin: 0 0 13px;
-
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 39px);
-  line-height: 1.06;
-  letter-spacing: -0.045em;
-}
-
-.booking-card-copy p {
-  max-width: 520px;
+.booking-simple-copy h3 {
   margin: 0;
 
-  color: #91a8ba;
-  font-size: 13px;
-  line-height: 1.65;
+  color: #f1f8fc;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
 }
 
-/* Call expectations */
+/* Calendly button */
 
-.booking-benefits {
-  margin: 27px 0 25px;
-  padding: 0;
-  list-style: none;
+.calendly-button-simple {
+  min-width: 205px;
+  min-height: 50px;
+  padding: 0 18px;
+
+  border-radius: 12px;
+  justify-content: space-between;
+  gap: 15px;
+
+  color: #061321;
+  background: linear-gradient(135deg, #5ee1ff, #00b9ed);
+  box-shadow: 0 14px 32px rgba(0, 191, 243, 0.2);
 }
 
-.booking-benefits li {
-  min-height: 64px;
-  padding: 11px 0;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.085);
-
-  display: grid;
-  grid-template-columns: 37px 1fr;
-  align-items: center;
-  gap: 12px;
+.calendly-button-simple:hover {
+  color: #061321;
+  background: linear-gradient(135deg, #7de8ff, #1bc8f3);
+  box-shadow: 0 18px 38px rgba(0, 191, 243, 0.28);
 }
 
-.booking-benefits li:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.085);
-}
-
-.booking-benefits > li > span {
-  width: 37px;
-  height: 37px;
-
-  border-radius: 10px;
-
-  display: grid;
-  place-items: center;
-
-  color: #55dcfa;
-  background: rgba(0, 194, 243, 0.065);
-}
-
-.booking-benefits > li > span svg {
+.calendly-button-simple svg {
   width: 16px;
   height: 16px;
 }
 
-.booking-benefits strong,
-.booking-benefits small {
-  display: block;
-}
-
-.booking-benefits strong {
-  margin-bottom: 3px;
-  color: #e5f0f7;
-  font-size: 12px;
-}
-
-.booking-benefits small {
-  color: #7890a4;
-  font-size: 10px;
-  line-height: 1.45;
-}
-
-/* Calendly action */
-
-.calendly-button {
-  width: 100%;
-  min-height: 52px;
-  justify-content: space-between;
-  gap: 18px;
-  border-radius: 12px;
-
-  color: #061321;
-  background: linear-gradient(135deg, #61e2ff, #10bee9);
-  box-shadow: 0 15px 34px rgba(0, 191, 243, 0.2);
-}
-
-.calendly-button:hover {
-  color: #061321;
-  background: linear-gradient(135deg, #7de8ff, #28ccf2);
-  box-shadow: 0 19px 40px rgba(0, 191, 243, 0.28);
-}
-
-.calendly-button svg {
-  width: 17px;
-  height: 17px;
-}
-
-.calendly-button.is-disabled {
-  color: #88a0b3;
+.calendly-button-simple.is-disabled {
+  color: #849bad;
   background: rgba(255, 255, 255, 0.055);
   box-shadow: none;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.booking-note {
-  margin: 12px 0 0;
+/* Secondary phone option */
 
-  color: #617a8f;
-  font-size: 8px;
-  text-align: center;
+.contact-phone {
+  margin-top: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: #71899d;
+  font-size: 11px;
 }
 
-@media (max-width: 960px) {
-  .contact-shell {
-    grid-template-columns: 1fr;
-    gap: 55px;
-  }
+.contact-phone a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 
-  .contact-copy {
-    max-width: 650px;
-  }
+  color: #c9d9e5;
+  font-weight: 700;
 
-  .booking-card {
-    max-width: 700px;
-  }
+  transition: color 0.2s ease;
+}
+
+.contact-phone a:hover {
+  color: #55dcfa;
+}
+
+.contact-phone svg {
+  width: 14px;
+  height: 14px;
+  color: #55dcfa;
 }
 
 @media (max-width: 720px) {
   .contact-section {
-    padding: 78px 0;
+    padding: 80px 0;
   }
 
-  .contact-shell {
-    gap: 42px;
+  .contact-copy h2 {
+    font-size: clamp(40px, 11vw, 54px);
   }
 
   .contact-copy > p {
-    margin: 22px 0 31px;
     font-size: 15px;
   }
 
-  .booking-card {
-    padding: 25px 21px;
-    border-radius: 19px;
+  .booking-card-simple {
+    margin-top: 36px;
+    padding: 22px;
+
+    grid-template-columns: 46px 1fr;
+    gap: 14px;
+
+    border-radius: 18px;
   }
 
-  .booking-card::before {
-    right: 21px;
-    left: 21px;
+  .booking-simple-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
   }
 
-  .booking-status {
-    display: none;
+  .booking-simple-copy h3 {
+    font-size: 20px;
   }
 
-  .booking-card-copy {
-    margin-top: 25px;
+  .calendly-button-simple {
+    width: 100%;
+    min-width: 0;
+    margin-top: 8px;
+    grid-column: 1 / -1;
   }
 
-  .booking-card-copy h3 {
-    font-size: clamp(27px, 9vw, 35px);
-  }
-
-  .booking-benefits {
-    margin: 23px 0;
-  }
-
-  .booking-benefits small {
-    font-size: 9px;
-  }
-
-  .calendly-button {
-    min-height: 50px;
+  .contact-phone {
+    flex-direction: column;
+    gap: 7px;
   }
 }
 /* Footer */
