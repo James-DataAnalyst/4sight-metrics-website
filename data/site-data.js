@@ -14,52 +14,51 @@
 window.SITE_DATA = {
   tools: [
     {
+      name: "QuickBooks",
+      icon: "assets/icons/tools/quickbooks.svg",
+      heroIcon: "assets/icons/tools/gray/quickbooks-gray.svg",
+    },
+    {
+      name: "Housecall Pro",
+      icon: "assets/icons/tools/housecall-pro.svg",
+      heroIcon: "assets/icons/tools/gray/housecall-pro-gray.svg",
+    },
+    {
+      name: "Gusto",
+      icon: "assets/icons/tools/gusto.svg",
+      heroIcon: "assets/icons/tools/gray/gusto-gray.svg",
+    },
+    {
+      name: "Buildertrend",
+      icon: "assets/icons/tools/buildertrend.svg",
+      heroIcon: "assets/icons/tools/gray/buildertrend-gray.svg",
+    },
+    {
       name: "Excel",
       icon: "assets/icons/tools/excel.svg",
       heroIcon: "assets/icons/tools/gray/excel-gray.svg",
     },
     {
-      name: "Azure",
-      icon: "assets/icons/tools/azure.svg",
-      heroIcon: "assets/icons/tools/gray/azure-gray.svg",
+      name: "Jobber",
+      icon: "assets/icons/tools/jobber.svg",
+      heroIcon: "assets/icons/tools/gray/jobber-gray.svg",
     },
     {
-      name: "Snowflake",
-      icon: "assets/icons/tools/snowflake.svg",
-      heroIcon: "assets/icons/tools/gray/snowflake-gray.svg",
+      name: "Zoho CRM",
+      icon: "assets/icons/tools/zoho-crm.svg",
+      heroIcon: "assets/icons/tools/gray/zoho-crm-gray.svg",
     },
     {
-      name: "Databricks",
-      icon: "assets/icons/tools/databricks.svg",
-      heroIcon: "assets/icons/tools/gray/databricks-gray.svg",
-    },
-    {
-      name: "Deneb",
-      icon: "assets/icons/tools/deneb.svg",
-      heroIcon: "assets/icons/tools/gray/deneb-gray.svg",
-    },
-    {
-      name: "PostgreSQL",
-      icon: "assets/icons/tools/postgresql.svg",
-      heroIcon: "assets/icons/tools/gray/postgresql-gray.svg",
+      name: "Google Sheets",
+      icon: "assets/icons/tools/google-sheets.svg",
+      heroIcon: "assets/icons/tools/gray/google-sheets-gray.svg",
     },
     {
       name: "Power BI",
       icon: "assets/icons/tools/power-bi.svg",
       heroIcon: "assets/icons/tools/gray/power-bi-gray.svg",
     },
-    {
-      name: "Microsoft Fabric",
-      icon: "assets/icons/tools/microsoft-fabric.svg",
-      heroIcon: "assets/icons/tools/gray/microsoft-fabric-gray.svg",
-    },
-    {
-      name: "SQL",
-      icon: "assets/icons/tools/sql.svg",
-      heroIcon: "assets/icons/tools/gray/sql-gray.svg",
-    },
   ],
-
   services: [
     {
       number: "01",

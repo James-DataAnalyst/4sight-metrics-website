@@ -109,7 +109,8 @@
 
             <h1 id="hero-title">
               See clearly.<br />
-              <span>Decide confidently.</span>
+              <span class="hero-accent-line">Decide</span>
+              <span class="hero-accent-line">confidently.</span>
             </h1>
 
             <p>
@@ -138,7 +139,7 @@
             <div class="hero-stage">
               <div
                 class="intelligence-flow"
-                aria-label="Business data connected through Power BI and Microsoft Fabric into decision-ready reporting"
+                aria-label="Business systems connected through secure automated processing into decision-ready reporting"
               >
                 <!-- Top status bar -->
                 <!-- <div class="flow-topbar">
@@ -154,21 +155,34 @@
                 </div> -->
 
                 <div class="flow-canvas">
-                  <!-- Animated connecting lines -->
                   <svg
                     class="flow-map"
-                    viewBox="0 0 760 500"
+                    viewBox="0 0 920 520"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
                     <defs>
-                      <linearGradient id="flow-gradient" x1="0" x2="1">
+                      <linearGradient
+                        id="flow-gradient"
+                        gradientUnits="userSpaceOnUse"
+                        x1="180"
+                        y1="0"
+                        x2="560"
+                        y2="0"
+                      >
                         <stop offset="0%" stop-color="#2684ff"></stop>
                         <stop offset="52%" stop-color="#26d9ff"></stop>
                         <stop offset="100%" stop-color="#55f1c8"></stop>
                       </linearGradient>
-
-                      <filter id="flow-glow">
+                      <filter
+                        id="flow-glow"
+                        filterUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="920"
+                        height="520"
+                        color-interpolation-filters="sRGB"
+                      >
                         <feGaussianBlur
                           stdDeviation="3"
                           result="blur"
@@ -180,182 +194,323 @@
                       </filter>
                     </defs>
 
-                    <!-- Background paths -->
+                    <!-- Static paths from the five source cards to the gear -->
                     <path
                       class="flow-path-base"
-                      d="M187 162 C211 162 219 218 238 235"
+                      d="M193 108 C220 108 229 207 251 232"
                     ></path>
 
                     <path
                       class="flow-path-base"
-                      d="M187 235 C210 235 220 242 238 250"
+                      d="M193 184 C220 184 232 230 251 246"
                     ></path>
 
                     <path
                       class="flow-path-base"
-                      d="M187 309 C210 309 220 282 238 270"
+                      d="M193 260 C216 260 232 260 251 260"
                     ></path>
 
                     <path
                       class="flow-path-base"
-                      d="M187 383 C211 383 220 306 238 285"
+                      d="M193 336 C220 336 232 290 251 274"
                     ></path>
 
-                    <!-- Intelligence layer to decision view -->
+                    <path
+                      class="flow-path-base"
+                      d="M193 412 C220 412 229 313 251 288"
+                    ></path>
+
+                    <!-- Static gear-to-dashboard route: shallow lower curve -->
                     <path
                       class="flow-path-base flow-path-base-output"
-                      d="M360 350 C395 405 468 430 535 425 C590 421 625 395 646 350"
+                      d="M326 272 C362 292 372 350 430 370 C478 386 525 375 548 354"
                     ></path>
 
-                    <!-- Animated signal paths -->
+                    <!-- Animated paths from the five source cards -->
                     <path
                       class="flow-path-signal flow-delay-1"
-                      d="M187 162 C211 162 219 218 238 235"
+                      d="M193 108 C220 108 229 207 251 232"
                     ></path>
 
                     <path
                       class="flow-path-signal flow-delay-2"
-                      d="M187 235 C210 235 220 242 238 250"
+                      d="M193 184 C220 184 232 230 251 246"
                     ></path>
 
                     <path
                       class="flow-path-signal flow-delay-3"
-                      d="M187 309 C210 309 220 282 238 270"
+                      d="M193 260 C216 260 232 260 251 260"
                     ></path>
 
                     <path
                       class="flow-path-signal flow-delay-4"
-                      d="M187 383 C211 383 220 306 238 285"
+                      d="M193 336 C220 336 232 290 251 274"
                     ></path>
 
-                    <!-- Animated intelligence layer to decision view -->
+                    <path
+                      class="flow-path-signal flow-delay-5"
+                      d="M193 412 C220 412 229 313 251 288"
+                    ></path>
+
+                    <!-- Animated gear-to-dashboard route: shallow lower curve -->
                     <path
                       class="flow-path-signal flow-path-output"
-                      d="M360 350 C395 405 468 430 535 425 C590 421 625 395 646 350"
+                      d="M326 272 C362 292 372 350 430 370 C478 386 525 375 548 354"
                     ></path>
                   </svg>
 
-                  <!-- Stage 01: Data sources -->
-                  <section class="flow-sources">
-                    <div class="flow-section-title">
-                      <span>01</span>
-                      <p>Business data</p>
-                    </div>
-
+                  <section
+                    class="flow-sources"
+                    aria-label="Connected business systems"
+                  >
                     <div class="source-list">
                       <div class="source-node">
-                        <span class="source-logo">
-                          <img
+                        <span class="source-logo"
+                          ><img
+                            src="assets/icons/tools/quickbooks.svg"
+                            alt=""
+                            width="32"
+                            height="32"
+                        /></span>
+                        <span
+                          ><strong>QuickBooks</strong
+                          ><small>Accounting</small></span
+                        >
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo"
+                          ><img
+                            src="assets/icons/tools/housecall-pro.svg"
+                            alt=""
+                            width="32"
+                            height="32"
+                        /></span>
+                        <span
+                          ><strong>Housecall Pro</strong
+                          ><small>Field operations</small></span
+                        >
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo"
+                          ><img
+                            src="assets/icons/tools/gusto.svg"
+                            alt=""
+                            width="32"
+                            height="32"
+                        /></span>
+                        <span
+                          ><strong>Gusto</strong
+                          ><small>Payroll &amp; HR</small></span
+                        >
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo"
+                          ><img
+                            src="assets/icons/tools/buildertrend.svg"
+                            alt=""
+                            width="32"
+                            height="32"
+                        /></span>
+                        <span
+                          ><strong>Buildertrend</strong
+                          ><small>Project management</small></span
+                        >
+                      </div>
+
+                      <div class="source-node">
+                        <span class="source-logo"
+                          ><img
                             src="assets/icons/tools/excel.svg"
                             alt=""
-                            width="28"
-                            height="28"
-                          />
-                        </span>
-
-                        <span>
-                          <strong>Excel</strong>
-                          <small>Operational files</small>
-                        </span>
-                      </div>
-
-                      <div class="source-node">
-                        <span class="source-logo">
-                          <img
-                            src="assets/icons/tools/sql.svg"
-                            alt=""
-                            width="28"
-                            height="28"
-                          />
-                        </span>
-
-                        <span>
-                          <strong>SQL</strong>
-                          <small>Business databases</small>
-                        </span>
-                      </div>
-
-                      <div class="source-node">
-                        <span class="source-logo">
-                          <img
-                            src="assets/icons/tools/azure.svg"
-                            alt=""
-                            width="28"
-                            height="28"
-                          />
-                        </span>
-
-                        <span>
-                          <strong>Azure</strong>
-                          <small>Cloud systems</small>
-                        </span>
-                      </div>
-
-                      <div class="source-node">
-                        <span class="source-logo">
-                          <img
-                            src="assets/icons/tools/snowflake.svg"
-                            alt=""
-                            width="28"
-                            height="28"
-                          />
-                        </span>
-
-                        <span>
-                          <strong>Snowflake</strong>
-                          <small>Data warehouse</small>
-                        </span>
+                            width="32"
+                            height="32"
+                        /></span>
+                        <span
+                          ><strong>Excel</strong
+                          ><small>Operational files</small></span
+                        >
                       </div>
                     </div>
                   </section>
 
-                  <!-- Stage 02: Intelligence layer -->
-                  <section class="flow-engine">
-                    <div class="flow-section-title">
-                      <span>02</span>
-                      <p>Intelligence layer</p>
-                    </div>
+                  <section
+                    class="flow-engine"
+                    aria-label="Secure automated processing"
+                  >
+                    <div
+                      class="processing-gear"
+                      role="img"
+                      aria-label="Secure processing in progress"
+                    >
+                      <svg
+                        class="gear-svg"
+                        viewBox="0 0 160 160"
+                        aria-hidden="true"
+                      >
+                        <defs>
+                          <linearGradient
+                            id="gear-metal"
+                            x1="0"
+                            y1="0"
+                            x2="1"
+                            y2="1"
+                          >
+                            <stop offset="0%" stop-color="#61f1d2"></stop>
+                            <stop offset="48%" stop-color="#26d9ff"></stop>
+                            <stop offset="100%" stop-color="#2684ff"></stop>
+                          </linearGradient>
+                        </defs>
 
-                    <div class="engine-core">
-                      <span class="engine-ring engine-ring-one"></span>
-                      <span class="engine-ring engine-ring-two"></span>
-
-                      <div class="engine-logos">
-                        <div>
-                          <img
-                            src="assets/icons/tools/power-bi.svg"
-                            alt="Power BI"
-                            width="42"
-                            height="42"
-                          />
-                          <small>Power BI</small>
-                        </div>
-
-                        <span class="engine-divider"></span>
-
-                        <div>
-                          <img
-                            src="assets/icons/tools/microsoft-fabric.svg"
-                            alt="Microsoft Fabric"
-                            width="42"
-                            height="42"
-                          />
-                          <small>Fabric</small>
-                        </div>
-                      </div>
-
-                      <strong>Trusted intelligence</strong>
-                      <p>Model · Govern · Refresh</p>
+                        <circle
+                          class="gear-orbit"
+                          cx="80"
+                          cy="80"
+                          r="67"
+                        ></circle>
+                        <g class="gear-rotor">
+                          <g class="gear-teeth" fill="url(#gear-metal)">
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(30 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(60 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(90 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(120 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(150 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(180 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(210 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(240 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(270 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(300 80 80)"
+                            ></rect>
+                            <rect
+                              x="73"
+                              y="3"
+                              width="14"
+                              height="28"
+                              rx="4"
+                              transform="rotate(330 80 80)"
+                            ></rect>
+                          </g>
+                          <circle
+                            cx="80"
+                            cy="80"
+                            r="48"
+                            fill="#071a2b"
+                            stroke="url(#gear-metal)"
+                            stroke-width="10"
+                          ></circle>
+                          <path
+                            d="M80 39V57 M80 103V121 M39 80H57 M103 80H121 M51 51L64 64 M96 96L109 109 M109 51L96 64 M64 96L51 109"
+                            fill="none"
+                            stroke="url(#gear-metal)"
+                            stroke-width="6"
+                            stroke-linecap="round"
+                          ></path>
+                        </g>
+                        <g class="gear-core">
+                          <circle
+                            cx="80"
+                            cy="80"
+                            r="25"
+                            fill="#06131f"
+                            stroke="#7df4de"
+                            stroke-width="2"
+                          ></circle>
+                          <circle
+                            cx="80"
+                            cy="80"
+                            r="12"
+                            fill="none"
+                            stroke="#2bd9ff"
+                            stroke-width="3"
+                          ></circle>
+                          <circle cx="80" cy="80" r="4" fill="#7df4de"></circle>
+                        </g>
+                      </svg>
                     </div>
                   </section>
 
-                  <!-- Stage 03: Reporting output -->
-                  <section class="flow-output">
-                    <div class="flow-section-title">
-                      <span>03</span>
-                      <p>Decision view</p>
-                    </div>
-
+                  <section
+                    class="flow-output"
+                    aria-label="Decision-ready dashboard"
+                  >
                     <div class="report-window">
                       <div class="report-window-bar">
                         <div>
@@ -389,11 +544,6 @@
                           <strong>Decision ready</strong>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="report-outcomes">
-                      <span>One trusted view</span>
-                      <span>Clear KPIs</span>
                     </div>
                   </section>
                 </div>

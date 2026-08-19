@@ -4310,75 +4310,40 @@ blockquote {
 
 .source-list {
   display: grid;
-  gap: 12px;
+
+  /* Previously 10px */
+  gap: 14px;
 }
 
 .source-node {
+  width: 100%;
   min-height: 62px;
-  padding: 10px;
+  padding: 10px 12px;
 
-  border: 1px solid rgba(122, 199, 232, 0.11);
-  border-radius: 13px;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  background: linear-gradient(
-    135deg,
-    rgba(15, 42, 65, 0.82),
-    rgba(7, 24, 40, 0.84)
-  );
-
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
-
-  transition:
-    transform 260ms ease,
-    border-color 260ms ease,
-    box-shadow 260ms ease;
+  border-radius: 14px;
 }
 
 .source-logo {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
 
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 10px;
-
-  display: grid;
-  place-items: center;
-
-  background: rgba(255, 255, 255, 0.055);
+  border-radius: 11px;
 }
 
 .source-logo img {
-  display: block;
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
-}
-
-.source-node strong,
-.source-node small {
-  display: block;
+  width: 27px;
+  height: 27px;
 }
 
 .source-node strong {
-  margin-bottom: 2px;
-  color: #e8f5fc;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .source-node small {
-  color: #6f899d;
-  font-size: 7px;
-  line-height: 1.3;
+  font-size: 7.3px;
 }
-
-/* Power BI + Fabric intelligence hub */
+/* Legacy processing-hub rules retained for backward compatibility. */
 .flow-engine {
   align-self: center;
 }
@@ -4927,6 +4892,480 @@ blockquote {
   }
 }
 
+/* =========================================================
+   HERO FLOW V2 — FIVE SOURCES / PRIVATE PROCESSING / BIG OUTPUT
+   Keep this block after the original hero-flow rules so these
+   values remain the final source of truth at every breakpoint.
+   ========================================================= */
+
+.hero-grid {
+  grid-template-columns: minmax(390px, 0.72fr) minmax(820px, 1.28fr);
+  gap: clamp(34px, 4vw, 66px);
+}
+
+.hero-visual {
+  width: min(940px, 114%);
+  justify-self: end;
+}
+
+.hero-stage,
+.intelligence-flow {
+  transform: none !important;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.intelligence-flow::before,
+.intelligence-flow::after {
+  display: none !important;
+}
+
+.flow-canvas {
+  position: relative;
+  min-height: 520px;
+  padding: 20px 12px;
+  display: grid;
+  grid-template-columns: 210px 150px minmax(460px, 1fr);
+  align-items: center;
+  gap: 32px;
+}
+
+.flow-map {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flow-path-base,
+.flow-path-signal {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-path-base {
+  stroke: rgba(73, 167, 213, 0.18);
+  stroke-width: 1.4;
+}
+
+.flow-path-signal {
+  stroke: url("#flow-gradient");
+  stroke-width: 2.35;
+  stroke-linecap: round;
+  stroke-dasharray: 9 12;
+  filter: url("#flow-glow");
+  animation: data-flow 0.82s linear infinite;
+}
+
+.flow-delay-2 {
+  animation-delay: -0.18s;
+}
+.flow-delay-3 {
+  animation-delay: -0.36s;
+}
+.flow-path-signal.flow-delay-3 {
+  stroke-width: 2.6;
+  stroke-dasharray: 8 9;
+}
+.flow-delay-4 {
+  animation-delay: -0.54s;
+}
+.flow-delay-5 {
+  animation-delay: -0.72s;
+}
+
+.flow-path-base-output {
+  stroke: rgba(78, 220, 238, 0.24);
+  stroke-width: 1.7;
+}
+
+.flow-path-output {
+  stroke-width: 2.8;
+  stroke-dasharray: 10 10;
+  animation-duration: 0.64s;
+}
+
+.flow-sources,
+.flow-engine,
+.flow-output {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.source-list {
+  display: grid;
+  gap: 10px;
+}
+
+.source-node {
+  min-height: 58px;
+  padding: 9px 11px;
+  border: 1px solid rgba(122, 199, 232, 0.13);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 42, 65, 0.88),
+    rgba(7, 24, 40, 0.9)
+  );
+  box-shadow:
+    0 13px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.source-logo {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.052);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.source-logo img {
+  display: block;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.source-node strong,
+.source-node small {
+  display: block;
+}
+
+.source-node strong {
+  margin-bottom: 3px;
+  color: #eef8fd;
+  font-size: 10.5px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.source-node small {
+  color: #728b9e;
+  font-size: 7px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.flow-engine {
+  align-self: center;
+  display: grid;
+  place-items: center;
+}
+
+.processing-gear {
+  width: 148px;
+  height: 148px;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.gear-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 14px rgba(43, 217, 255, 0.2));
+}
+
+.gear-rotor {
+  transform-origin: 80px 80px;
+  animation: gear-spin 8s linear infinite;
+}
+
+.gear-orbit {
+  fill: none;
+  stroke: rgba(76, 220, 255, 0.28);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 9;
+  transform-origin: 80px 80px;
+  animation: gear-spin 13s linear infinite reverse;
+}
+
+.gear-core {
+  transform-origin: 80px 80px;
+  animation: gear-core-pulse 2.3s ease-in-out infinite;
+}
+
+.flow-output {
+  width: 100%;
+  align-self: center;
+}
+
+.report-window {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(126, 215, 255, 0.23);
+  border-radius: 16px;
+  background: #07121e;
+  box-shadow:
+    0 28px 68px rgba(0, 0, 0, 0.38),
+    0 0 42px rgba(0, 184, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  transition:
+    transform 300ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.report-window-bar {
+  min-height: 35px;
+  padding: 0 12px;
+}
+
+.report-window-bar > div {
+  gap: 5px;
+}
+.report-window-bar > div i {
+  width: 6px;
+  height: 6px;
+}
+.report-window-bar > span {
+  font-size: 7.5px;
+}
+.report-window-bar > span i {
+  width: 6px;
+  height: 6px;
+}
+
+.report-preview-status {
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  padding: 8px 10px;
+}
+
+.report-preview-status span {
+  font-size: 6.5px;
+}
+.report-preview-status strong {
+  font-size: 7.5px;
+}
+
+.hero-tools {
+  margin-top: 48px;
+  height: 74px;
+}
+
+.marquee-track {
+  animation-duration: 20s;
+}
+
+.tool {
+  min-width: 176px;
+  padding: 0 22px;
+  gap: 11px;
+  color: #9badbb;
+  opacity: 0.94;
+}
+
+.tool-logo {
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+  border-color: rgba(145, 190, 214, 0.11);
+  background: linear-gradient(
+    145deg,
+    rgba(151, 207, 233, 0.075),
+    rgba(50, 103, 132, 0.025)
+  );
+}
+
+.tool-logo img {
+  width: 22px;
+  height: 22px;
+  filter: none !important;
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .source-node:hover {
+    transform: translateX(4px);
+    border-color: rgba(67, 213, 255, 0.31);
+    box-shadow:
+      0 17px 36px rgba(0, 0, 0, 0.27),
+      0 0 20px rgba(34, 199, 255, 0.07);
+  }
+
+  .flow-output:hover .report-window {
+    transform: translateY(-4px);
+    border-color: rgba(93, 220, 255, 0.36);
+    box-shadow:
+      0 34px 76px rgba(0, 0, 0, 0.42),
+      0 0 48px rgba(0, 184, 255, 0.13);
+  }
+
+  .flow-output:hover .report-preview > img {
+    transform: scale(1.018);
+  }
+}
+
+@keyframes gear-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gear-core-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1350px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+
+  .hero-copy {
+    max-width: 720px;
+  }
+
+  .hero-visual {
+    width: min(100%, 940px);
+    margin-inline: auto;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-grid {
+    gap: 38px;
+  }
+
+  .flow-canvas {
+    min-height: 0;
+    padding: 24px 13px 28px;
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .flow-map {
+    display: none;
+  }
+
+  .source-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .source-node {
+    min-height: 58px;
+    padding: 9px;
+  }
+
+  .source-node:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 4.5px);
+    justify-self: center;
+  }
+
+  .source-logo {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .source-logo img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .flow-sources::after,
+  .flow-engine::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    bottom: -58px;
+    width: 2px;
+    height: 48px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2bd5ff 0 8px,
+      transparent 8px 14px
+    );
+    filter: drop-shadow(0 0 4px rgba(43, 213, 255, 0.65));
+    animation: mobile-data-flow 0.5s linear infinite;
+  }
+
+  .processing-gear {
+    width: 146px;
+    height: 146px;
+    margin-inline: auto;
+  }
+
+  .flow-output,
+  .report-window {
+    width: 100%;
+  }
+
+  .hero-tools {
+    height: 62px;
+    margin-top: 36px;
+  }
+
+  .tool {
+    min-width: 146px;
+    padding-inline: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .source-node strong {
+    font-size: 8.8px;
+  }
+  .source-node small {
+    display: none;
+  }
+  .source-node:last-child {
+    width: 100%;
+  }
+  .processing-gear {
+    width: 132px;
+    height: 132px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-path-signal,
+  .gear-rotor,
+  .gear-orbit,
+  .gear-core,
+  .flow-sources::after,
+  .flow-engine::after {
+    animation: none !important;
+  }
+}
+
 /* Preserve your smaller header logo */
 .brand {
   width: 145px;
@@ -5179,5 +5618,250 @@ blockquote {
   .project-modal.has-live-project .modal-close {
     top: 9px;
     right: 12px;
+  }
+}
+
+/* =========================================================
+   HERO FLOW V3 — SPACING AND CONNECTOR CORRECTIONS
+   ========================================================= */
+
+/* Give the hero more room and prevent overlap */
+.hero > .hero-grid {
+  /* More breathing room on both outer edges */
+  width: min(calc(100% - 160px), 1440px);
+
+  grid-template-columns:
+    minmax(420px, 0.8fr)
+    minmax(700px, 1.2fr);
+
+  /* Bring the five tools closer to the text */
+  gap: clamp(32px, 3vw, 48px);
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-visual {
+  width: 100%;
+  max-width: 880px;
+  justify-self: end;
+}
+
+.hero-copy h1 .hero-accent-line {
+  display: block;
+  width: max-content;
+  max-width: calc(100% + 0.22em);
+  padding-right: 0.22em;
+
+  /* DM Sans has a clearer lowercase e at large display sizes. */
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+
+  color: transparent;
+  background: linear-gradient(90deg, #91ebff 0%, #2acaf6 55%, #25aaff 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  overflow: visible;
+  animation: hero-gradient-shift 7s ease-in-out infinite;
+}
+
+/*
+  Five-column internal layout:
+
+  1. Source cards
+  2. Source-to-gear space
+  3. Gear
+  4. Gear-to-dashboard space
+  5. Dashboard
+*/
+.flow-canvas {
+  position: relative;
+  min-height: 520px;
+  padding: 20px 0;
+
+  display: grid;
+
+  /*
+    21%  = larger source cards
+    5.5% = longer visible source connectors
+    10%  = compact gear column
+    7%   = output connector space
+  */
+  grid-template-columns:
+    21%
+    5.5%
+    10%
+    7%
+    minmax(0, 1fr);
+
+  align-items: center;
+  gap: 0;
+}
+
+.flow-sources {
+  grid-column: 1;
+}
+
+.flow-engine {
+  grid-column: 3;
+}
+
+.flow-output {
+  grid-column: 5;
+}
+
+/* Larger source cards with precise spacing. */
+.source-list {
+  display: grid;
+  gap: 14px;
+}
+
+.source-node {
+  width: 100%;
+  min-height: 62px;
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+.source-logo {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 11px;
+}
+
+.source-logo img {
+  width: 27px;
+  height: 27px;
+}
+
+.source-node strong {
+  font-size: 11px;
+}
+
+.source-node small {
+  font-size: 7.3px;
+}
+
+/* Smaller and properly balanced gear */
+.processing-gear {
+  width: 78px;
+  height: 78px;
+
+  margin-inline: auto;
+
+  display: grid;
+  place-items: center;
+
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Make the final connector clearly visible */
+.flow-path-base-output {
+  stroke: rgba(85, 241, 200, 0.32);
+  stroke-width: 1.9;
+}
+
+.flow-path-output {
+  stroke: url("#flow-gradient");
+  stroke-width: 3.2;
+  stroke-dasharray: 8 8;
+  stroke-linecap: round;
+  opacity: 1;
+
+  filter: url("#flow-glow");
+  animation-duration: 0.85s;
+}
+
+/* Gusto → intelligence gear
+   The glow filter is intentionally disabled because this path is horizontal. */
+/* Gusto line — identical styling to the other input lines */
+.flow-path-signal.flow-delay-3 {
+  stroke: url("#flow-gradient") !important;
+  stroke-width: 2.35;
+  stroke-linecap: round;
+  stroke-dasharray: 9 12;
+  opacity: 1;
+  filter: url("#flow-glow") !important;
+  animation: data-flow 0.82s linear infinite;
+  animation-delay: -0.36s;
+}
+/* Stacked layout for smaller laptops and tablets */
+@media (max-width: 1350px) {
+  .hero > .hero-grid {
+    width: min(calc(100% - 48px), var(--container));
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+
+  .hero-visual {
+    width: min(100%, 900px);
+    max-width: 900px;
+    margin-inline: auto;
+    justify-self: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .flow-canvas {
+    min-height: 0;
+    padding: 24px 13px 28px;
+
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .flow-sources,
+  .flow-engine,
+  .flow-output {
+    grid-column: 1;
+  }
+
+  .processing-gear {
+    width: 84px;
+    height: 84px;
+  }
+
+  .source-list {
+    gap: 10px;
+  }
+
+  .source-node {
+    min-height: 58px;
+    padding: 9px 10px;
+  }
+
+  .source-logo {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .source-logo img {
+    width: 23px;
+    height: 23px;
+  }
+
+  .source-node strong {
+    font-size: 9.5px;
+  }
+
+  .source-node small {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 430px) {
+  .processing-gear {
+    width: 76px;
+    height: 76px;
   }
 }
