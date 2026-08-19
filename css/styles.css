@@ -1680,16 +1680,21 @@ blockquote {
 .pain-icon {
   width: 52px;
   height: 52px;
-  border: 1px solid rgba(8, 127, 252, 0.17);
+
+  border: 1px solid rgba(0, 185, 237, 0.2);
   border-radius: 15px;
+
   display: grid;
   place-items: center;
-  color: var(--blue-2);
-  background: rgba(255, 255, 255, 0.72);
+
+  color: #00a9d8;
+  background: rgba(255, 255, 255, 0.76);
+
   transition:
     color 0.25s ease,
     border-color 0.25s ease,
     background 0.25s ease,
+    box-shadow 0.25s ease,
     transform 0.25s ease;
 }
 
@@ -1763,16 +1768,39 @@ blockquote {
 }
 
 .pain-item.is-open .pain-icon {
-  color: var(--white);
-  border-color: var(--blue-2);
-  background: var(--blue-2);
+  color: var(--ink);
+  border-color: transparent;
+  background: linear-gradient(135deg, #5ee1ff, #00b9ed);
+
+  box-shadow:
+    0 10px 25px rgba(0, 191, 243, 0.2),
+    0 0 0 4px rgba(0, 191, 243, 0.055);
+
   transform: translateY(-2px);
 }
 
 .pain-trigger:hover .pain-title {
-  color: var(--blue-dark);
+  color: #008db7;
+}
+.pain-item.is-open .pain-title {
+  color: #007fa6;
 }
 
+.pain-item.is-open .pain-toggle {
+  color: #00a9d8;
+}
+
+.pain-trigger:hover .pain-icon {
+  color: #008db7;
+  border-color: rgba(0, 185, 237, 0.38);
+  background: rgba(0, 191, 243, 0.055);
+  transform: translateY(-2px);
+}
+
+.pain-item.is-open .pain-trigger:hover .pain-icon {
+  color: var(--ink);
+  background: linear-gradient(135deg, #7de8ff, #1bc8f3);
+}
 /* Selected work */
 .work-section {
   padding-bottom: 68px;
