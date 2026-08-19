@@ -62,36 +62,42 @@ window.SITE_DATA = {
   services: [
     {
       number: "01",
-      icon: "layout-dashboard",
-      title: "Executive dashboards",
-      description:
-        "One trusted view of performance, priorities and risk—designed for leaders.",
+      icon: "landmark",
+      title: "Financial",
+      description: "See the financial outcome clearly.",
       points: [
-        "Financial & operational reporting",
-        "Board and management views",
-        "Mobile-ready KPI monitoring",
+        "Revenue",
+        "Gross margin",
+        "Profitability",
+        "Cash flow",
+        "Accounts receivable",
       ],
-      featured: true,
     },
     {
       number: "02",
-      icon: "network",
-      title: "Data & KPI foundations",
-      description:
-        "Clean models, governed metrics and reliable refreshes your team can trust.",
-      points: ["Data modelling", "KPI architecture", "Automated pipelines"],
+      icon: "settings-2",
+      title: "Operational",
+      description: "Understand the drivers behind the numbers.",
+      points: [
+        "Volume",
+        "Productivity",
+        "Utilization",
+        "Conversion",
+        "Capacity",
+      ],
     },
     {
       number: "03",
-      icon: "compass",
-      title: "BI strategy & advisory",
+      icon: "chart-no-axes-combined",
+      title: "Business performance",
       description:
-        "A practical roadmap that aligns people, technology and reporting priorities.",
+        "Financial outcomes connected to the operational activity driving them.",
       points: [
-        "BI maturity assessment",
-        "Reporting transformation",
-        "Team enablement",
+        "What is happening?",
+        "Why is it happening?",
+        "Where should we focus?",
       ],
+      result: true,
     },
   ],
 
@@ -368,10 +374,6 @@ window.SITE_DATA = {
     {
       name: "Instagram",
       url: "https://www.instagram.com/4sightmetrics",
-    },
-    {
-      name: "WhatsApp",
-      url: "https://wa.me/12819445756",
     },
   ],
 };

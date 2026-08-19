@@ -62,22 +62,77 @@
     if (!target) return;
 
     target.innerHTML = data.services
-      .map(
-        (service, index) => `
-      <article class="expertise-card ${service.featured ? "featured" : ""} reveal" style="--delay:${index * 80}ms">
-        <div class="card-topline"><span>${escapeHTML(service.number)}</span>${icon(service.icon)}</div>
-        <div>
-          <h3>${escapeHTML(service.title)}</h3>
-          <p>${escapeHTML(service.description)}</p>
-        </div>
-        <ul>${service.points.map((point) => `<li>${icon("check", 15)} ${escapeHTML(point)}</li>`).join("")}</ul>
-        ${service.featured ? `<a href="#contact">Discuss a dashboard ${icon("arrow-up-right", 18)}</a>` : ""}
-      </article>
-    `,
-      )
+      .map((service, index) => {
+        const operator =
+          index === 0
+            ? `
+            <div class="expertise-operator" aria-hidden="true">
+              <span>+</span>
+            </div>
+          `
+            : index === 1
+              ? `
+              <div class="expertise-operator" aria-hidden="true">
+                <span>=</span>
+              </div>
+            `
+              : "";
+
+        const card = `
+        <article
+          class="expertise-card ${
+            service.result ? "result-card" : "source-card"
+          } reveal"
+          style="--delay:${index * 80}ms"
+        >
+          <div class="card-topline">
+            <span>${escapeHTML(service.number)}</span>
+
+            <span class="expertise-icon">
+              ${icon(service.icon, 20)}
+            </span>
+          </div>
+
+          <div class="expertise-card-copy">
+            <span class="card-label">
+              ${service.result ? "Connected intelligence" : "Business signals"}
+            </span>
+
+            <h3>${escapeHTML(service.title)}</h3>
+
+            <p>${escapeHTML(service.description)}</p>
+          </div>
+
+          <ul class="expertise-metrics">
+            ${service.points
+              .map(
+                (point) => `
+                  <li>
+                    ${icon(service.result ? "arrow-right" : "check", 15)}
+                    <span>${escapeHTML(point)}</span>
+                  </li>
+                `,
+              )
+              .join("")}
+          </ul>
+
+          ${
+            service.result
+              ? `
+                <a class="expertise-cta" href="#contact">
+                  Build your connected view
+                  ${icon("arrow-up-right", 17)}
+                </a>
+              `
+              : ""
+          }
+        </article>
+      `;
+
+        return card + operator;
+      })
       .join("");
   }
-
   function findProject(projectId) {
     return data.projects.find((project) => project.id === projectId);
   }
@@ -284,14 +339,9 @@
     target.innerHTML = `
     <div class="project-carousel">
       <div class="project-carousel-header">
-        <div>
-          <span>Demo library</span>
-
-          <strong>
-            ${String(projects.length).padStart(2, "0")}
-            ${projects.length === 1 ? "project" : "projects"}
-          </strong>
-        </div>
+       <div>
+  <span>Sample dashboards</span>
+</div>
 
         <div class="project-carousel-controls">
           <button
