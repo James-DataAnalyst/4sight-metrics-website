@@ -551,6 +551,16 @@
             </div>
           </div>
         </div>
+        <div class="container hero-audience">
+          <span class="audience-line" aria-hidden="true"></span>
+
+          <p>
+            <strong>Built for growing businesses</strong>
+            that have outgrown spreadsheets and disconnected reporting.
+          </p>
+
+          <span class="audience-line" aria-hidden="true"></span>
+        </div>
         <div
           class="hero-tools container"
           aria-label="Technology platforms we work with"
@@ -741,8 +751,7 @@
           </div>
 
           <p class="showcase-description">
-            Not more charts. Not more reports. A clearer way to understand
-            performance and know where to focus.
+            Fewer reports. Clearer insight into performance and priorities.
           </p>
         </div>
         <div class="glimpse-slider reveal" data-glimpse-slider>
@@ -1132,13 +1141,13 @@
 
         <div class="container contact-simple">
           <div class="contact-copy reveal">
-            <span class="section-kicker light">Book a clarity call</span>
+            <span class="section-kicker light">Book a discovery call</span>
 
             <h2>Ready to see your business more clearly?</h2>
 
             <p>
-              Schedule a focused 30-minute call to discuss your reporting needs
-              and the best way forward.
+              Schedule a discovery call to discuss your reporting needs, current
+              challenges and the best way forward.
             </p>
           </div>
 
@@ -1148,19 +1157,18 @@
             </span>
 
             <div class="booking-simple-copy">
-              <span>30-minute Clarity Call</span>
+              <span>Discovery call</span>
               <h3>Choose a time that works for you.</h3>
             </div>
 
-            <!-- Temporary until your Calendly URL is ready -->
             <a
-              class="button calendly-button-simple is-disabled"
-              href="#"
-              aria-disabled="true"
-              tabindex="-1"
+              class="button calendly-button-simple"
+              href="https://calendly.com/4sightadvisors/4sightmetrics-discovery-call"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Calendar coming soon
-              <i data-lucide="clock-3" aria-hidden="true"></i>
+              Schedule a discovery call
+              <i data-lucide="arrow-up-right" aria-hidden="true"></i>
             </a>
           </div>
 
@@ -1187,31 +1195,125 @@
               height="90"
             />
           </a>
-          <p>See clearly.<br />Decide confidently.</p>
+
+          <p class="footer-tagline">
+            Turning business data into clarity, insight, and better decisions.
+          </p>
+
+          <p class="footer-dba">
+            4Sight Metrics is an assumed name (DBA) of 4Sight Advisors LLC.
+          </p>
         </div>
+
         <div class="footer-column">
-          <strong>Navigate</strong><a href="#expertise">Solutions</a
-          ><a href="#glimpse">Examples</a><a href="#work">Demos</a
-          ><a href="#process">How it works</a>
+          <strong>Navigate</strong>
+          <a href="#expertise">Solutions</a>
+          <a href="#glimpse">Examples</a>
+          <a href="#work">Demos</a>
+          <a href="#process">How it works</a>
         </div>
+
         <div class="footer-column">
           <strong>Connect</strong>
           <a href="tel:+12819445756">Call us</a>
           <a href="#contact">Book a call</a>
         </div>
+
         <div class="footer-social">
-          <strong>Follow the signal</strong>
+          <strong>Follow 4Sight Metrics</strong>
           <div id="social-links"></div>
         </div>
       </div>
+
+      <div class="container footer-legal">
+        <nav class="footer-legal-links" aria-label="Legal information">
+          <button
+            type="button"
+            data-legal-document="privacy"
+            aria-haspopup="dialog"
+          >
+            Privacy
+          </button>
+
+          <button
+            type="button"
+            data-legal-document="terms"
+            aria-haspopup="dialog"
+          >
+            Terms
+          </button>
+
+          <button
+            type="button"
+            data-legal-document="accessibility"
+            aria-haspopup="dialog"
+          >
+            Accessibility
+          </button>
+
+          <button
+            type="button"
+            data-legal-document="cookies"
+            aria-haspopup="dialog"
+          >
+            Cookies
+          </button>
+        </nav>
+
+        <p class="footer-disclaimer">
+          Information on this website is provided for general informational
+          purposes only and does not constitute accounting, tax, legal,
+          investment, or other professional advice. Results, dashboards,
+          analyses, and recommendations vary based on client circumstances, data
+          quality, implementation, and other factors. No client relationship is
+          created until a written engagement agreement is executed.
+        </p>
+      </div>
+
       <div class="container footer-bottom">
-        <span>© 4Sight Metrics. All rights reserved.</span>
+        <span>
+          © 2026 4Sight Advisors LLC d/b/a 4Sight Metrics. All rights reserved.
+        </span>
+
         <button type="button" data-back-top>
-          Back to top <i data-lucide="arrow-up-right"></i>
+          Back to top
+          <i data-lucide="arrow-up-right" aria-hidden="true"></i>
         </button>
       </div>
     </footer>
+    <dialog
+      class="legal-dialog"
+      id="legal-dialog"
+      aria-labelledby="legal-dialog-title"
+    >
+      <div class="legal-dialog-shell">
+        <header class="legal-dialog-header">
+          <div>
+            <span>4Sight Metrics</span>
+            <h2 id="legal-dialog-title">Legal information</h2>
+          </div>
 
+          <button
+            class="legal-dialog-close"
+            type="button"
+            data-legal-close
+            aria-label="Close legal information"
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+        </header>
+
+        <div class="legal-dialog-body" id="legal-dialog-body" tabindex="0">
+          <p class="legal-loading">Loading legal information…</p>
+        </div>
+
+        <footer class="legal-dialog-footer">
+          <span>4Sight Advisors LLC d/b/a 4Sight Metrics</span>
+
+          <button type="button" data-legal-close>Close</button>
+        </footer>
+      </div>
+    </dialog>
     <dialog
       class="project-modal"
       id="project-modal"

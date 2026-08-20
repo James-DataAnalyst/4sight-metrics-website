@@ -77,7 +77,7 @@ window.SITE_DATA = {
       number: "02",
       icon: "settings-2",
       title: "Operational",
-      description: "Understand the drivers behind the numbers.",
+      description: "Understand what is driving the result.",
       points: [
         "Volume",
         "Productivity",
@@ -89,9 +89,9 @@ window.SITE_DATA = {
     {
       number: "03",
       icon: "chart-no-axes-combined",
-      title: "Business performance",
+      title: "Business Clarity",
       description:
-        "Financial outcomes connected to the operational activity driving them.",
+        "Connect financial outcomes to the operational activity driving them",
       points: [
         "What is happening?",
         "Why is it happening?",
@@ -338,27 +338,21 @@ window.SITE_DATA = {
   testimonials: [
     {
       quote:
-        "4Sight helped us move from scattered monthly reports to one clear performance view. Leadership conversations are now faster and more focused.",
-      name: "Alex Morgan",
-      role: "Finance Director",
-      company: "Demo company",
-      initials: "AM",
+        "As an Amazon DSP owner, there are hundreds of things to keep track of. 4Sight helped cut through the noise and connect the financial and operational data that matters most, giving me a much clearer view of the business.",
+      name: "Tola",
+      role: "Amazon DSP Owner",
     },
     {
       quote:
-        "The team understood the business question before touching the dashboard. That made the final solution genuinely useful—not just impressive.",
-      name: "Sarah Okafor",
-      role: "Operations Lead",
-      company: "Demo company",
-      initials: "SO",
+        "I was drowning in spreadsheets and had tried multiple AI tools, but I still couldn’t get the clarity I needed. I ended up spending hours trying to make it work on my own. One conversation with the 4Sight Metrics team changed that, they understood what I was trying to accomplish and helped turn it into a clear, practical solution.",
+      name: "Ola",
+      role: "Builder and General Contractor",
     },
     {
       quote:
-        "We finally have metrics everyone defines the same way. Reporting is lighter, and managers know exactly where to focus.",
-      name: "David Lee",
-      role: "Commercial Manager",
-      company: "Demo company",
-      initials: "DL",
+        "I partner with the 4Sight Metrics team to build custom dashboards for my premium clients. Their professionalism, patience, and ability to turn complex ideas into clear, well-designed solutions are exceptional. I highly recommend them.",
+      name: "Michael",
+      role: "Business Coach",
     },
   ],
 

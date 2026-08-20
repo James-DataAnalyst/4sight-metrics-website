@@ -119,11 +119,21 @@
           ${
             service.result
               ? `
-                <a class="expertise-cta" href="#contact">
-                  Build your connected view
-                  ${icon("arrow-up-right", 17)}
-                </a>
-              `
+    <a class="expertise-cta" href="#contact">
+      <span class="expertise-cta-icon">
+        ${icon("scan-search", 16)}
+      </span>
+
+      <span class="expertise-cta-copy">
+        <small>Recommended next step</small>
+        <strong>Build your connected view</strong>
+      </span>
+
+      <span class="expertise-cta-arrow">
+        ${icon("arrow-up-right", 16)}
+      </span>
+    </a>
+  `
               : ""
           }
         </article>
@@ -162,7 +172,7 @@
         <div class="art-body">
           <aside><strong>4S</strong><i></i><i></i><i></i><i></i><i></i></aside>
           <div class="art-canvas">
-            <div class="art-heading"><div><small>EXECUTIVE INTELLIGENCE</small><b>${escapeHTML(project.shortTitle || project.title)}</b></div><span>● LIVE</span></div>
+            <div class="art-heading"><div><small>EXECUTIVE INTELLIGENCE</small><b>${escapeHTML(project.shortTitle || project.title)}</b></div><span>â— LIVE</span></div>
             <div class="art-metrics">
               ${metrics
                 .slice(0, 3)
@@ -302,9 +312,10 @@
         <div class="project-visual">
           ${dashboardVisual(project, "project-dashboard")}
 
-          <span class="project-open" aria-hidden="true">
-            ${icon("expand", 20)}
-          </span>
+         <span class="project-open" aria-hidden="true">
+  ${icon("eye", 16)}
+  <span>View report</span>
+</span>
         </div>
 
         <div class="project-meta">
@@ -513,13 +524,23 @@
 
     target.innerHTML = `
       <article class="testimonial-card">
-        <div class="quote-icon">“</div>
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“${escapeHTML(testimonial.quote)}”</blockquote>
+      <div class="quote-icon" aria-hidden="true">&ldquo;</div>
+
+<div class="stars" role="img" aria-label="5 out of 5 stars">
+  <span aria-hidden="true">&#9733;</span>
+  <span aria-hidden="true">&#9733;</span>
+  <span aria-hidden="true">&#9733;</span>
+  <span aria-hidden="true">&#9733;</span>
+  <span aria-hidden="true">&#9733;</span>
+</div>
+
+<blockquote>
+  &ldquo;${escapeHTML(testimonial.quote)}&rdquo;
+</blockquote>
         <div class="testimonial-author">
-          <span>${escapeHTML(testimonial.initials)}</span>
-          <div><strong>${escapeHTML(testimonial.name)}</strong><small>${escapeHTML(testimonial.role)} · ${escapeHTML(testimonial.company)}</small></div>
-        </div>
+  <strong>${escapeHTML(testimonial.name)}</strong>
+  <small>${escapeHTML(testimonial.role)}</small>
+</div>
         <div class="testimonial-progress">${data.testimonials.map((_, dotIndex) => `<i class="${dotIndex === testimonialIndex ? "active" : ""}"></i>`).join("")}</div>
       </article>`;
   }
@@ -1070,14 +1091,14 @@
 
       const formData = new FormData(form);
       const subject = encodeURIComponent(
-        `Website enquiry — ${formData.get("service")}`,
+        `Website enquiry â€” ${formData.get("service")}`,
       );
       const body = encodeURIComponent(
         `Name: ${formData.get("firstName")} ${formData.get("lastName")}\n` +
           `Email: ${formData.get("email")}\n` +
           `Service: ${formData.get("service")}\n\n${formData.get("message")}`,
       );
-      status.textContent = "Opening your email app…";
+      status.textContent = "Opening your email appâ€¦";
       status.classList.remove("error");
       window.location.href = `mailto:hello@4sightmetrics.com?subject=${subject}&body=${body}`;
     });
@@ -1093,6 +1114,262 @@
       () => toast.classList.remove("show"),
       3400,
     );
+  }
+
+  const legalDocuments = {
+    privacy: {
+      title: "Privacy Policy",
+    },
+    terms: {
+      title: "Terms of Use",
+    },
+    accessibility: {
+      title: "Accessibility Statement",
+    },
+    cookies: {
+      title: "Cookie Policy",
+    },
+  };
+
+  const legalSectionHeadings = new Set(
+    [
+      "Information We May Collect",
+      "How We Use Information",
+      "How Information May Be Shared",
+      "Cookies and Analytics",
+      "Third-Party Scheduling Platforms",
+      "Third-Party Websites",
+      "Data Security",
+      "Data Retention",
+      "Your Privacy Choices",
+      "Marketing Communications",
+      "Children's Privacy",
+      "Changes to This Privacy Policy",
+      "Privacy Questions",
+      "Website Purpose",
+      "No Client or Professional Relationship",
+      "Data, Dashboards and Analytics",
+      "No Guarantee of Results",
+      "Demonstration Dashboards",
+      "Third-Party Platforms and Services",
+      "Client Responsibility",
+      "Testimonials",
+      "Permitted Use",
+      "Intellectual Property",
+      "Accuracy and Availability",
+      "Third-Party Links",
+      "Disclaimer of Warranties",
+      "Limitation of Liability",
+      "Governing Law",
+      "Changes to These Terms",
+      "Questions",
+      "Our Accessibility Efforts",
+      "Accessibility Assistance",
+      "What Are Cookies?",
+      "Types of Cookies We May Use",
+      "Essential Cookies",
+      "Analytics Cookies",
+      "Functional Cookies",
+      "Marketing Cookies",
+      "Cookie Preferences",
+      "Third-Party Technologies",
+      "Changes to This Cookie Policy",
+    ].map((heading) => heading.toLowerCase()),
+  );
+
+  let legalDocumentsPromise;
+  let lastLegalTrigger = null;
+
+  function splitLegalDocuments(source = "") {
+    const normalizedSource = source.replace(/\r/g, "").replace(/\u00a0/g, " ");
+    const headingPattern =
+      /^\s*(?:\*\*)?([1-8])\.\s+([A-Z][A-Z ]+)(?:\*\*)?\s*$/gm;
+    const matches = [...normalizedSource.matchAll(headingPattern)];
+    const documentKeys = {
+      1: "privacy",
+      2: "terms",
+      3: "accessibility",
+      4: "cookies",
+    };
+    const documents = {};
+
+    matches.forEach((match, index) => {
+      const documentKey = documentKeys[match[1]];
+      const start = match.index + match[0].length;
+      const end = matches[index + 1]?.index ?? normalizedSource.length;
+
+      if (documentKey) {
+        documents[documentKey] = normalizedSource
+          .slice(start, end)
+          .replace(/^\s*---\s*$/gm, "")
+          .trim();
+      }
+    });
+
+    if (Object.keys(documents).length !== 4) {
+      throw new Error("The four legal documents could not be identified.");
+    }
+
+    return documents;
+  }
+
+  function loadLegalDocuments() {
+    if (!legalDocumentsPromise) {
+      const legalFileUrl = new URL(
+        "data/legal/legal-content.md",
+        document.baseURI,
+      );
+
+      legalDocumentsPromise = fetch(legalFileUrl, { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Unable to load legal information.");
+          }
+
+          return response.text();
+        })
+        .then(splitLegalDocuments)
+        .catch((error) => {
+          legalDocumentsPromise = null;
+          throw error;
+        });
+    }
+
+    return legalDocumentsPromise;
+  }
+
+  function formatLegalInline(value = "") {
+    return escapeHTML(value).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  }
+
+  function legalMarkdownToHTML(markdown = "") {
+    const lines = markdown.split(/\r?\n/);
+    const output = [];
+
+    let paragraph = [];
+    let listOpen = false;
+
+    const flushParagraph = () => {
+      if (!paragraph.length) return;
+
+      output.push(`<p>${formatLegalInline(paragraph.join(" "))}</p>`);
+
+      paragraph = [];
+    };
+
+    const closeList = () => {
+      if (!listOpen) return;
+
+      output.push("</ul>");
+      listOpen = false;
+    };
+
+    lines.forEach((rawLine) => {
+      const line = rawLine
+        .replace(/\u00a0/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      if (!line) {
+        flushParagraph();
+        closeList();
+        return;
+      }
+
+      const markdownHeading = line.match(/^\*\*(.+?)\*\*$/);
+      const plainHeading = legalSectionHeadings.has(line.toLowerCase());
+
+      if (markdownHeading || plainHeading) {
+        flushParagraph();
+        closeList();
+
+        const headingText = markdownHeading ? markdownHeading[1] : line;
+        output.push(`<h3>${formatLegalInline(headingText)}</h3>`);
+        return;
+      }
+
+      const bullet = line.match(/^(?:-|\u2022)\s*(.+)$/);
+
+      if (bullet) {
+        flushParagraph();
+
+        if (!listOpen) {
+          output.push("<ul>");
+          listOpen = true;
+        }
+
+        output.push(`<li>${formatLegalInline(bullet[1])}</li>`);
+        return;
+      }
+
+      closeList();
+      paragraph.push(line);
+    });
+
+    flushParagraph();
+    closeList();
+
+    return output.join("");
+  }
+
+  function setupLegalDialog() {
+    const dialog = $("#legal-dialog");
+    const title = $("#legal-dialog-title");
+    const content = $("#legal-dialog-body");
+
+    if (!dialog || !title || !content) return;
+
+    $$("[data-legal-document]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const documentKey = button.dataset.legalDocument;
+        const documentConfig = legalDocuments[documentKey];
+
+        if (!documentConfig) return;
+
+        lastLegalTrigger = button;
+        title.textContent = documentConfig.title;
+        content.innerHTML =
+          '<p class="legal-loading">Loading legal informationâ€¦</p>';
+
+        dialog.showModal();
+        document.body.classList.add("legal-open");
+
+        try {
+          const documents = await loadLegalDocuments();
+          const section = documents[documentKey];
+
+          if (!section) {
+            throw new Error("Legal document was not found.");
+          }
+
+          content.innerHTML = legalMarkdownToHTML(section);
+          content.scrollTop = 0;
+          content.focus({ preventScroll: true });
+        } catch (error) {
+          console.error("Unable to load legal document:", error);
+          content.innerHTML = `
+          <p class="legal-error">
+            We could not load this document. Please try again.
+          </p>
+        `;
+        }
+      });
+    });
+
+    $$("[data-legal-close]", dialog).forEach((button) => {
+      button.addEventListener("click", () => dialog.close());
+    });
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener("close", () => {
+      document.body.classList.remove("legal-open");
+      lastLegalTrigger?.focus();
+    });
   }
 
   function initialize() {
@@ -1111,6 +1388,7 @@
     setupPainPoints();
     setupFAQ();
     setupContactForm();
+    setupLegalDialog();
     setupReveal();
     refreshIcons();
 
