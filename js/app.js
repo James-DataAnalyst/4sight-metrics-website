@@ -119,20 +119,23 @@
           ${
             service.result
               ? `
-    <a class="expertise-cta" href="#contact">
-      <span class="expertise-cta-icon">
-        ${icon("scan-search", 16)}
-      </span>
+ <a
+  class="expertise-cta expertise-cta-primary"
+  href="#contact"
+>
+  <span>Get Started</span>
 
-      <span class="expertise-cta-copy">
-        <small>Recommended next step</small>
-        <strong>Build your connected view</strong>
-      </span>
-
-      <span class="expertise-cta-arrow">
-        ${icon("arrow-up-right", 16)}
-      </span>
-    </a>
+  <span class="expertise-cta-arrow">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M7 7h10v10"></path>
+      <path d="M7 17 17 7"></path>
+    </svg>
+  </span>
+</a>
   `
               : ""
           }
@@ -172,7 +175,7 @@
         <div class="art-body">
           <aside><strong>4S</strong><i></i><i></i><i></i><i></i><i></i></aside>
           <div class="art-canvas">
-            <div class="art-heading"><div><small>EXECUTIVE INTELLIGENCE</small><b>${escapeHTML(project.shortTitle || project.title)}</b></div><span>â— LIVE</span></div>
+            <div class="art-heading"><div><small>EXECUTIVE INTELLIGENCE</small><b>${escapeHTML(project.shortTitle || project.title)}</b></div><span>&#9679; LIVE</span></div>
             <div class="art-metrics">
               ${metrics
                 .slice(0, 3)
@@ -480,18 +483,6 @@
         <circle class="icon-fill" cx="17.4" cy="6.7" r="1.1" />
       </svg>
     `,
-
-      WhatsApp: `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          d="M20.4 3.5A11.6 11.6 0 0 0 2.15 17.48L.5 23.5l6.17-1.62A11.6 11.6 0 0 0 20.4 3.5Z"
-        />
-        <path
-          d="M8.25 6.7c-.23-.52-.48-.53-.7-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.15.21 2.22 3.39 5.39 4.75.75.32 1.34.52 1.8.66.76.24 1.45.21 2 .13.61-.09 1.87-.76 2.13-1.5.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.61-.37l-2.25-1.05c-.3-.11-.53-.16-.75.16-.22.31-.84 1.05-1.03 1.26-.19.21-.38.24-.7.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.76-2.19-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.55L8.25 6.7Z"
-          class="phone-mark"
-        />
-      </svg>
-    `,
     };
 
     target.innerHTML = data.socialLinks
@@ -514,35 +505,97 @@
       .join("");
   }
 
+  /* =========================================================
+     CLIENT TESTIMONIAL CAROUSEL: RENDERING AND RESPONSIVE HEIGHT
+     ========================================================= */
+
   let testimonialIndex = 0;
   function renderTestimonial(index = 0) {
     const target = $("#testimonial-stage");
     if (!target || !data.testimonials.length) return;
+
     testimonialIndex =
       (index + data.testimonials.length) % data.testimonials.length;
-    const testimonial = data.testimonials[testimonialIndex];
 
     target.innerHTML = `
-      <article class="testimonial-card">
-      <div class="quote-icon" aria-hidden="true">&ldquo;</div>
+      <div class="testimonial-track">
+        ${data.testimonials
+          .map(
+            (testimonial, slideIndex) => `
+              <article
+                class="testimonial-card"
+                aria-label="Testimonial ${slideIndex + 1} of ${data.testimonials.length}"
+                aria-hidden="${slideIndex !== testimonialIndex}"
+              >
+                <div class="quote-icon" aria-hidden="true">&ldquo;</div>
 
-<div class="stars" role="img" aria-label="5 out of 5 stars">
-  <span aria-hidden="true">&#9733;</span>
-  <span aria-hidden="true">&#9733;</span>
-  <span aria-hidden="true">&#9733;</span>
-  <span aria-hidden="true">&#9733;</span>
-  <span aria-hidden="true">&#9733;</span>
-</div>
+                <div class="stars" role="img" aria-label="5 out of 5 stars">
+                  <span aria-hidden="true">&#9733;</span>
+                  <span aria-hidden="true">&#9733;</span>
+                  <span aria-hidden="true">&#9733;</span>
+                  <span aria-hidden="true">&#9733;</span>
+                  <span aria-hidden="true">&#9733;</span>
+                </div>
 
-<blockquote>
-  &ldquo;${escapeHTML(testimonial.quote)}&rdquo;
-</blockquote>
-        <div class="testimonial-author">
-  <strong>${escapeHTML(testimonial.name)}</strong>
-  <small>${escapeHTML(testimonial.role)}</small>
-</div>
-        <div class="testimonial-progress">${data.testimonials.map((_, dotIndex) => `<i class="${dotIndex === testimonialIndex ? "active" : ""}"></i>`).join("")}</div>
-      </article>`;
+                <blockquote>
+                  &ldquo;${escapeHTML(testimonial.quote)}&rdquo;
+                </blockquote>
+
+                <div class="testimonial-card-footer">
+                  <div class="testimonial-author">
+                    <strong>${escapeHTML(testimonial.name)}</strong>
+                    <small>${escapeHTML(testimonial.role)}</small>
+                  </div>
+
+                  <div class="testimonial-progress" aria-hidden="true">
+                    ${data.testimonials
+                      .map(
+                        (_, dotIndex) =>
+                          `<i class="${dotIndex === slideIndex ? "active" : ""}"></i>`,
+                      )
+                      .join("")}
+                  </div>
+                </div>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>`;
+
+    const track = $(".testimonial-track", target);
+    track.style.transform = `translate3d(-${testimonialIndex * 100}%, 0, 0)`;
+
+    syncTestimonialHeight();
+  }
+
+  function syncTestimonialHeight() {
+    const stage = $("#testimonial-stage");
+    if (!stage) return;
+
+    const cards = $$(".testimonial-card", stage);
+    const activeCard = cards[testimonialIndex];
+
+    if (!activeCard) return;
+    stage.style.height = `${activeCard.offsetHeight}px`;
+  }
+
+  function setTestimonialSlide(index) {
+    const stage = $("#testimonial-stage");
+    if (!stage) return;
+
+    const track = $(".testimonial-track", stage);
+    if (!track || !data.testimonials.length) return;
+
+    testimonialIndex =
+      (index + data.testimonials.length) % data.testimonials.length;
+
+    track.style.transform = `translate3d(-${testimonialIndex * 100}%, 0, 0)`;
+
+    $$(".testimonial-card", track).forEach((card, slideIndex) => {
+      card.setAttribute("aria-hidden", String(slideIndex !== testimonialIndex));
+    });
+
+    window.requestAnimationFrame(syncTestimonialHeight);
   }
 
   function getSafeProjectUrl(value = "") {
@@ -983,13 +1036,97 @@
     });
   }
 
+  /* =========================================================
+     CLIENT TESTIMONIAL CAROUSEL: CONTROLS, AUTOPLAY AND SWIPE
+     ========================================================= */
+
   function setupTestimonials() {
-    $("[data-testimonial-prev]")?.addEventListener("click", () =>
-      renderTestimonial(testimonialIndex - 1),
+    const stage = $("#testimonial-stage");
+    const previousButton = $("[data-testimonial-prev]");
+    const nextButton = $("[data-testimonial-next]");
+
+    if (!stage || data.testimonials.length < 2) return;
+
+    const carousel = stage.closest(".testimonial-carousel") || stage;
+
+    const rotationDelay = 6500;
+    let rotationTimer = null;
+    let touchStartX = 0;
+
+    if ("ResizeObserver" in window) {
+      const testimonialResizeObserver = new ResizeObserver(
+        syncTestimonialHeight,
+      );
+
+      $$(".testimonial-card", stage).forEach((card) =>
+        testimonialResizeObserver.observe(card),
+      );
+    } else {
+      window.addEventListener("resize", syncTestimonialHeight);
+    }
+
+    const stopRotation = () => {
+      window.clearInterval(rotationTimer);
+      rotationTimer = null;
+    };
+
+    const startRotation = () => {
+      stopRotation();
+
+      // Respect accessibility preferences and do not rotate in a hidden tab.
+      if (reducedMotion || document.hidden) return;
+
+      rotationTimer = window.setInterval(() => {
+        setTestimonialSlide(testimonialIndex + 1);
+      }, rotationDelay);
+    };
+
+    const showTestimonial = (offset) => {
+      setTestimonialSlide(testimonialIndex + offset);
+      startRotation();
+    };
+
+    previousButton?.addEventListener("click", () => showTestimonial(-1));
+    nextButton?.addEventListener("click", () => showTestimonial(1));
+
+    // Give visitors time to read when they interact with the review.
+    carousel.addEventListener("mouseenter", stopRotation);
+    carousel.addEventListener("mouseleave", startRotation);
+    carousel.addEventListener("focusin", stopRotation);
+    carousel.addEventListener("focusout", (event) => {
+      if (!carousel.contains(event.relatedTarget)) startRotation();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopRotation();
+      else startRotation();
+    });
+
+    // Allow the same natural swipe gesture used by the glimpse carousel.
+    stage.addEventListener(
+      "touchstart",
+      (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+        stopRotation();
+      },
+      { passive: true },
     );
-    $("[data-testimonial-next]")?.addEventListener("click", () =>
-      renderTestimonial(testimonialIndex + 1),
+
+    stage.addEventListener(
+      "touchend",
+      (event) => {
+        const distance = event.changedTouches[0].clientX - touchStartX;
+
+        if (Math.abs(distance) >= 45) {
+          showTestimonial(distance < 0 ? 1 : -1);
+        } else {
+          startRotation();
+        }
+      },
+      { passive: true },
     );
+
+    startRotation();
   }
 
   function setupModal() {
@@ -1068,51 +1205,6 @@
           if (other !== detail) other.removeAttribute("open");
         });
       }),
-    );
-  }
-
-  function setupContactForm() {
-    const form = $("#contact-form");
-    if (!form) return;
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const required = $$("[required]", form);
-      required.forEach((field) => field.classList.remove("invalid"));
-      const invalid = required.filter((field) => !field.checkValidity());
-      const status = $(".form-status", form);
-
-      if (invalid.length) {
-        invalid.forEach((field) => field.classList.add("invalid"));
-        invalid[0].focus();
-        status.textContent = "Please complete the highlighted fields.";
-        status.classList.add("error");
-        return;
-      }
-
-      const formData = new FormData(form);
-      const subject = encodeURIComponent(
-        `Website enquiry â€” ${formData.get("service")}`,
-      );
-      const body = encodeURIComponent(
-        `Name: ${formData.get("firstName")} ${formData.get("lastName")}\n` +
-          `Email: ${formData.get("email")}\n` +
-          `Service: ${formData.get("service")}\n\n${formData.get("message")}`,
-      );
-      status.textContent = "Opening your email appâ€¦";
-      status.classList.remove("error");
-      window.location.href = `mailto:hello@4sightmetrics.com?subject=${subject}&body=${body}`;
-    });
-  }
-
-  function showToast(message) {
-    const toast = $("#toast");
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add("show");
-    window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(
-      () => toast.classList.remove("show"),
-      3400,
     );
   }
 
@@ -1387,7 +1479,6 @@
     setupModal();
     setupPainPoints();
     setupFAQ();
-    setupContactForm();
     setupLegalDialog();
     setupReveal();
     refreshIcons();

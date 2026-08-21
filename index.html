@@ -272,10 +272,7 @@
                             width="32"
                             height="32"
                         /></span>
-                        <span
-                          ><strong>QuickBooks</strong
-                          ><small>Accounting</small></span
-                        >
+                        <span><strong>QuickBooks</strong></span>
                       </div>
 
                       <div class="source-node">
@@ -286,10 +283,7 @@
                             width="32"
                             height="32"
                         /></span>
-                        <span
-                          ><strong>Housecall Pro</strong
-                          ><small>Field operations</small></span
-                        >
+                        <span><strong>Housecall Pro</strong></span>
                       </div>
 
                       <div class="source-node">
@@ -300,10 +294,7 @@
                             width="32"
                             height="32"
                         /></span>
-                        <span
-                          ><strong>Gusto</strong
-                          ><small>Payroll &amp; HR</small></span
-                        >
+                        <span><strong>Gusto</strong></span>
                       </div>
 
                       <div class="source-node">
@@ -314,10 +305,7 @@
                             width="32"
                             height="32"
                         /></span>
-                        <span
-                          ><strong>Buildertrend</strong
-                          ><small>Project management</small></span
-                        >
+                        <span><strong>Buildertrend</strong></span>
                       </div>
 
                       <div class="source-node">
@@ -328,10 +316,7 @@
                             width="32"
                             height="32"
                         /></span>
-                        <span
-                          ><strong>Excel</strong
-                          ><small>Operational files</small></span
-                        >
+                        <span><strong>Excel</strong></span>
                       </div>
                     </div>
                   </section>
@@ -1041,33 +1026,43 @@
         </div>
       </section>
 
+      <!-- =====================================================
+           CLIENT TESTIMONIAL CAROUSEL
+           ===================================================== -->
       <section class="section testimonials-section" id="testimonials">
         <div class="container testimonial-layout">
-          <div class="testimonial-intro reveal">
+          <header class="testimonial-heading reveal">
             <span class="section-kicker">Client perspective</span>
             <h2>Clarity teams can feel.</h2>
-            <div class="testimonial-controls">
-              <button
-                type="button"
-                data-testimonial-prev
-                aria-label="Previous testimonial"
-              >
-                <i data-lucide="arrow-left"></i>
-              </button>
-              <button
-                type="button"
-                data-testimonial-next
-                aria-label="Next testimonial"
-              >
-                <i data-lucide="arrow-right"></i>
-              </button>
-            </div>
+          </header>
+
+          <div class="testimonial-carousel reveal">
+            <button
+              class="testimonial-side-control testimonial-side-control--previous"
+              type="button"
+              data-testimonial-prev
+              aria-label="Previous testimonial"
+            >
+              <i data-lucide="arrow-left" aria-hidden="true"></i>
+            </button>
+
+            <div
+              class="testimonial-stage"
+              id="testimonial-stage"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Client testimonials"
+            ></div>
+
+            <button
+              class="testimonial-side-control testimonial-side-control--next"
+              type="button"
+              data-testimonial-next
+              aria-label="Next testimonial"
+            >
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
           </div>
-          <div
-            class="testimonial-stage reveal"
-            id="testimonial-stage"
-            aria-live="polite"
-          ></div>
         </div>
       </section>
 
@@ -1157,7 +1152,6 @@
             </span>
 
             <div class="booking-simple-copy">
-              <span>Discovery call</span>
               <h3>Choose a time that works for you.</h3>
             </div>
 
@@ -1198,10 +1192,6 @@
 
           <p class="footer-tagline">
             Turning business data into clarity, insight, and better decisions.
-          </p>
-
-          <p class="footer-dba">
-            4Sight Metrics is an assumed name (DBA) of 4Sight Advisors LLC.
           </p>
         </div>
 
@@ -1267,6 +1257,10 @@
           analyses, and recommendations vary based on client circumstances, data
           quality, implementation, and other factors. No client relationship is
           created until a written engagement agreement is executed.
+        </p>
+
+        <p class="footer-dba">
+          4Sight Metrics is an assumed name (DBA) of 4Sight Advisors LLC.
         </p>
       </div>
 
@@ -1345,8 +1339,6 @@
         </div>
       </div>
     </dialog>
-
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="assets/vendor/lucide.min.js" defer></script>
     <script src="data/site-data.js" defer></script>

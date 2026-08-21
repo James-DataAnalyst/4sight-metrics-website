@@ -339,19 +339,19 @@ window.SITE_DATA = {
     {
       quote:
         "As an Amazon DSP owner, there are hundreds of things to keep track of. 4Sight helped cut through the noise and connect the financial and operational data that matters most, giving me a much clearer view of the business.",
-      name: "Tola",
+      name: "Tola, O.",
       role: "Amazon DSP Owner",
     },
     {
       quote:
         "I was drowning in spreadsheets and had tried multiple AI tools, but I still couldn’t get the clarity I needed. I ended up spending hours trying to make it work on my own. One conversation with the 4Sight Metrics team changed that, they understood what I was trying to accomplish and helped turn it into a clear, practical solution.",
-      name: "Ola",
+      name: "Ola, K.",
       role: "Builder and General Contractor",
     },
     {
       quote:
         "I partner with the 4Sight Metrics team to build custom dashboards for my premium clients. Their professionalism, patience, and ability to turn complex ideas into clear, well-designed solutions are exceptional. I highly recommend them.",
-      name: "Michael",
+      name: "Michael, O.",
       role: "Business Coach",
     },
   ],
