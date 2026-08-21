@@ -35,6 +35,8 @@ html {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
 
   /* Matches the footer during iOS bottom overscroll. */
   background: #040d17;
@@ -46,15 +48,25 @@ html {
 body {
   width: 100%;
   max-width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
   margin: 0;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
   color: var(--text);
-  background: var(--white);
+  /* iOS exposes the body color during rubber-band overscroll. */
+  background: #040d17;
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Keep the normal page sections light while the document edge stays dark. */
+main {
+  background: var(--white);
 }
 
 /* Prevent wide animated elements from exposing blank page space on touch. */
@@ -2600,10 +2612,18 @@ blockquote {
 
 .testimonial-track {
   display: flex;
-  align-items: stretch;
+  /* Desktop cards keep their natural content height. */
+  align-items: flex-start;
   will-change: transform;
 
   transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 720px) {
+  .testimonial-track {
+    /* JS assigns every mobile slide the tallest measured card height. */
+    align-items: stretch;
+  }
 }
 
 .testimonial-card {
@@ -2787,7 +2807,7 @@ blockquote {
   }
 }
 /* ==================================================
-   CONTACT â€” SIMPLE CALENDLY BOOKING
+   CONTACT Ã¢â‚¬â€ SIMPLE CALENDLY BOOKING
    ================================================== */
 
 .contact-section {
@@ -4462,7 +4482,7 @@ blockquote {
   }
 }
 /* =========================================================
-   HERO â€” CONNECTED INTELLIGENCE FLOW
+   HERO Ã¢â‚¬â€ CONNECTED INTELLIGENCE FLOW
    ========================================================= */
 
 .hero-grid {
@@ -5321,7 +5341,7 @@ blockquote {
 }
 
 /* =========================================================
-   HERO FLOW V2 â€” FIVE SOURCES / PRIVATE PROCESSING / BIG OUTPUT
+   HERO FLOW V2 Ã¢â‚¬â€ FIVE SOURCES / PRIVATE PROCESSING / BIG OUTPUT
    Keep this block after the original hero-flow rules so these
    values remain the final source of truth at every breakpoint.
    ========================================================= */
@@ -5829,7 +5849,7 @@ blockquote {
   }
 }
 /* =========================================================
-   GLIMPSE IMAGE â€” PRESERVE NATURAL RATIO, NO WHITE BORDERS
+   GLIMPSE IMAGE Ã¢â‚¬â€ PRESERVE NATURAL RATIO, NO WHITE BORDERS
    This must remain at the bottom of styles.css
 ========================================================= */
 
@@ -5873,7 +5893,7 @@ blockquote {
 }
 
 /* =========================================================
-   SELECTED WORK â€” PREMIUM DASHBOARD PREVIEWS
+   SELECTED WORK Ã¢â‚¬â€ PREMIUM DASHBOARD PREVIEWS
 ========================================================= */
 
 /*
@@ -6050,7 +6070,7 @@ blockquote {
 }
 
 /* =========================================================
-   HERO FLOW V3 â€” SPACING AND CONNECTOR CORRECTIONS
+   HERO FLOW V3 Ã¢â‚¬â€ SPACING AND CONNECTOR CORRECTIONS
    ========================================================= */
 
 /* Give the hero more room and prevent overlap */
@@ -6208,9 +6228,9 @@ blockquote {
   animation-duration: 0.85s;
 }
 
-/* Gusto â†’ intelligence gear
+/* Gusto Ã¢â€ â€™ intelligence gear
    The glow filter is intentionally disabled because this path is horizontal. */
-/* Gusto line â€” identical styling to the other input lines */
+/* Gusto line Ã¢â‚¬â€ identical styling to the other input lines */
 .flow-path-signal.flow-delay-3 {
   stroke: url("#flow-gradient") !important;
   stroke-width: 2.35;
@@ -6295,7 +6315,7 @@ blockquote {
 }
 
 /* ==================================================
-   WHAT WE BUILD â€” CONNECTED PERFORMANCE CARDS
+   WHAT WE BUILD Ã¢â‚¬â€ CONNECTED PERFORMANCE CARDS
    ================================================== */
 
 .expertise-grid {
@@ -6565,7 +6585,7 @@ blockquote {
   color: #53dfff;
 }
 
-/* Result CTA â€” recommendation-style action */
+/* Result CTA Ã¢â‚¬â€ recommendation-style action */
 
 .expertise-card .expertise-cta {
   min-height: 64px;
@@ -6758,7 +6778,7 @@ blockquote {
   }
 }
 /* ==================================================
-   WHY 4SIGHT â€” REFINED MARGIN INTELLIGENCE CARD
+   WHY 4SIGHT Ã¢â‚¬â€ REFINED MARGIN INTELLIGENCE CARD
    ================================================== */
 
 .margin-alert-card {
@@ -7090,7 +7110,7 @@ blockquote {
 .margin-alert-card {
   inset: 16px 12px 12px;
 }
-/* Analytical recommendation â€” not a button */
+/* Analytical recommendation Ã¢â‚¬â€ not a button */
 
 .margin-recommendation {
   margin-top: 13px;
@@ -7177,6 +7197,9 @@ blockquote {
    ================================================== */
 
 .site-footer {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   color: #8fa4b8;
   background:
     radial-gradient(

@@ -510,6 +510,7 @@
      ========================================================= */
 
   let testimonialIndex = 0;
+  const mobileTestimonialQuery = window.matchMedia("(max-width: 720px)");
   function renderTestimonial(index = 0) {
     const target = $("#testimonial-stage");
     if (!target || !data.testimonials.length) return;
@@ -575,22 +576,31 @@
     const cards = $$(".testimonial-card", stage);
     if (!cards.length) return;
 
-    // Reset before measuring at the current screen width.
+    const useEqualMobileHeight = mobileTestimonialQuery.matches;
+
+    // Reset every inline height before taking a fresh measurement.
     cards.forEach((card) => {
       card.style.height = "auto";
     });
 
-    // Reserve enough space for the longest testimonial.
-    const tallestCardHeight = Math.ceil(
-      Math.max(...cards.map((card) => card.scrollHeight)),
-    );
+    if (useEqualMobileHeight) {
+      // Mobile: reserve the tallest review so the page bottom never moves.
+      const tallestCardHeight = Math.ceil(
+        Math.max(...cards.map((card) => card.scrollHeight)),
+      );
 
-    stage.style.height = `${tallestCardHeight}px`;
+      stage.style.height = `${tallestCardHeight}px`;
 
-    // Give every slide the same stable height.
-    cards.forEach((card) => {
-      card.style.height = `${tallestCardHeight}px`;
-    });
+      cards.forEach((card) => {
+        card.style.height = `${tallestCardHeight}px`;
+      });
+
+      return;
+    }
+
+    // Desktop: let the active card follow its natural content height.
+    const activeCard = cards[testimonialIndex];
+    stage.style.height = `${Math.ceil(activeCard.scrollHeight)}px`;
   }
 
   function setTestimonialSlide(index) {
@@ -609,7 +619,7 @@
       card.setAttribute("aria-hidden", String(slideIndex !== testimonialIndex));
     });
 
-    // window.requestAnimationFrame(syncTestimonialHeight);
+    window.requestAnimationFrame(syncTestimonialHeight);
   }
 
   function getSafeProjectUrl(value = "") {
@@ -1442,7 +1452,7 @@
         lastLegalTrigger = button;
         title.textContent = documentConfig.title;
         content.innerHTML =
-          '<p class="legal-loading">Loading legal informationâ€¦</p>';
+          '<p class="legal-loading">Loading legal informationÃ¢â‚¬Â¦</p>';
 
         dialog.showModal();
         document.body.classList.add("legal-open");
@@ -1485,6 +1495,65 @@
     });
   }
 
+  /* =========================================================
+     MOBILE PAGE BOUNDARY GUARD
+     Prevents iOS rubber-band space below the footer without
+     interfering with horizontal carousel swipes.
+     ========================================================= */
+
+  function setupPageBoundaryGuard() {
+    if (!window.matchMedia("(pointer: coarse)").matches) return;
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.addEventListener(
+      "touchstart",
+      (event) => {
+        const touch = event.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      },
+      { passive: true },
+    );
+
+    document.addEventListener(
+      "touchmove",
+      (event) => {
+        if (
+          document.body.classList.contains("legal-open") ||
+          document.body.classList.contains("modal-open") ||
+          document.body.classList.contains("nav-open")
+        ) {
+          return;
+        }
+
+        const touch = event.touches[0];
+        const horizontalDistance = touch.clientX - touchStartX;
+        const verticalDistance = touch.clientY - touchStartY;
+
+        // Preserve horizontal testimonial and dashboard swipes.
+        if (Math.abs(horizontalDistance) >= Math.abs(verticalDistance)) return;
+
+        const scrollRoot =
+          document.scrollingElement || document.documentElement;
+        const currentScroll = scrollRoot.scrollTop;
+        const maximumScroll = Math.max(
+          0,
+          scrollRoot.scrollHeight - scrollRoot.clientHeight,
+        );
+
+        const pullingPastBottom =
+          currentScroll >= maximumScroll - 4 && verticalDistance < 0;
+
+        if (pullingPastBottom) {
+          event.preventDefault();
+        }
+      },
+      { passive: false },
+    );
+  }
+
   function initialize() {
     renderToolMarquee();
     renderServices();
@@ -1501,6 +1570,7 @@
     setupPainPoints();
     setupFAQ();
     setupLegalDialog();
+    setupPageBoundaryGuard();
     setupReveal();
     refreshIcons();
 
