@@ -573,10 +573,24 @@
     if (!stage) return;
 
     const cards = $$(".testimonial-card", stage);
-    const activeCard = cards[testimonialIndex];
+    if (!cards.length) return;
 
-    if (!activeCard) return;
-    stage.style.height = `${activeCard.offsetHeight}px`;
+    // Reset before measuring at the current screen width.
+    cards.forEach((card) => {
+      card.style.height = "auto";
+    });
+
+    // Reserve enough space for the longest testimonial.
+    const tallestCardHeight = Math.ceil(
+      Math.max(...cards.map((card) => card.scrollHeight)),
+    );
+
+    stage.style.height = `${tallestCardHeight}px`;
+
+    // Give every slide the same stable height.
+    cards.forEach((card) => {
+      card.style.height = `${tallestCardHeight}px`;
+    });
   }
 
   function setTestimonialSlide(index) {
@@ -595,7 +609,7 @@
       card.setAttribute("aria-hidden", String(slideIndex !== testimonialIndex));
     });
 
-    window.requestAnimationFrame(syncTestimonialHeight);
+    // window.requestAnimationFrame(syncTestimonialHeight);
   }
 
   function getSafeProjectUrl(value = "") {
@@ -1053,17 +1067,24 @@
     let rotationTimer = null;
     let touchStartX = 0;
 
-    if ("ResizeObserver" in window) {
-      const testimonialResizeObserver = new ResizeObserver(
-        syncTestimonialHeight,
-      );
+    let resizeTimer = null;
+    let measuredViewportWidth = window.innerWidth;
 
-      $$(".testimonial-card", stage).forEach((card) =>
-        testimonialResizeObserver.observe(card),
-      );
-    } else {
-      window.addEventListener("resize", syncTestimonialHeight);
-    }
+    window.addEventListener("resize", () => {
+      const currentViewportWidth = window.innerWidth;
+
+      // Ignore iPhone Safari toolbar height changes.
+      if (Math.abs(currentViewportWidth - measuredViewportWidth) < 2) return;
+
+      measuredViewportWidth = currentViewportWidth;
+
+      window.clearTimeout(resizeTimer);
+
+      resizeTimer = window.setTimeout(syncTestimonialHeight, 150);
+    });
+
+    // Recheck after Manrope and DM Sans finish loading.
+    document.fonts?.ready.then(syncTestimonialHeight);
 
     const stopRotation = () => {
       window.clearInterval(rotationTimer);
