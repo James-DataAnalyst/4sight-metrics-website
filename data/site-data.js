@@ -158,6 +158,12 @@ window.SITE_DATA = {
     },
 
     {
+      id: "glimpse-bank",
+      image: "assets/images/glimpse/bank.webp",
+      imageAlt: "Banking dashboard",
+    },
+
+    {
       id: "glimpse-FinacialOverview",
       image: "assets/images/glimpse/FinancialOverview.webp",
       imageAlt: "Financial Overview dashboard",
@@ -200,39 +206,162 @@ window.SITE_DATA = {
       embedUrl: "https://new-crypto-dashboard-ashy.vercel.app/",
     },
     {
-      id: "finance-cockpit",
+      id: "automated-monthly-sales-reporting",
       type: "Reporting Systems",
-      title: "Executive Revenue Performance",
-      shortTitle: "Revenue Performance",
+      category: "Excel automation · Sales operations",
+      title: "Automated Monthly Sales Reporting",
+      shortTitle: "Monthly Sales Reporting",
       description:
-        "Revenue, targets, performance gaps and profit margin brought together in one executive view.",
-      tags: ["Power BI", "Revenue Analytics", "Executive Reporting"],
+        "A refresh-ready Excel reporting system that turns new monthly sales files into a dashboard and management report without rebuilding the workbook each month.",
+      tags: ["Excel", "Power Query", "Power Pivot", "PivotTables"],
       theme: "ocean",
 
-      image: "assets/images/projects/sales-report.webp",
+      image: "assets/images/projects/automated-monthly-sales-dashboard.png",
       imageAlt:
-        "Executive revenue dashboard showing total revenue, target performance, revenue gap, profit margin and regional contribution",
+        "BluePeak Excel performance dashboard showing sales, profit, targets, orders and business filters",
 
-      embedUrl:
-        "https://app.powerbi.com/view?r=eyJrIjoiMzIzYmVhOTQtZjcxMC00YWM3LWI1ZTUtZDAyN2JhNmQ0NWE2IiwidCI6IjRiZTBmMTg5LWVkODQtNDhiOC05YTEyLTkwNDFkNWRiYzNhMiJ9",
+      caseStudy: {
+        kicker: "Excel automation · Sales operations",
+
+        headline:
+          "Monthly reporting without rebuilding the report every month.",
+
+        intro:
+          "BluePeak's reporting process was designed around a simple business need: add the new month's sales file, refresh the workbook, and get an updated management view without repeating the same preparation work again.",
+
+        heroImage:
+          "assets/images/projects/automated-monthly-sales-dashboard.png",
+
+        heroAlt:
+          "BluePeak performance command center showing net sales, gross profit, gross margin, operating profit, target attainment and orders",
+
+        heroCaption:
+          "The final dashboard brings sales, profitability, targets and branch performance into one clear monthly view.",
+
+        problem: {
+          title: "The same reporting work kept coming back every month.",
+
+          text: "When monthly sales arrive as separate Excel or CSV files, teams can spend time combining files, cleaning columns, rebuilding summaries and checking formulas before they can even discuss performance. The bigger problem is not Excel itself. It is a reporting process that depends on repeating manual steps.",
+        },
+
+        solution: {
+          title: "Turn the monthly task into a reusable reporting system.",
+
+          text: "The workbook was built so new sales files can be added to the reporting folder and pulled into the same Power Query process. The cleaned data feeds one connected model, which then updates the pivots, dashboard and management report from the same source.",
+        },
+
+        gallery: [
+          {
+            eyebrow: "01 / Prepare",
+
+            title: "New monthly files enter one repeatable data process.",
+
+            text: "Power Query combines the monthly sales files, keeps the required fields, standardises the data and applies the same preparation steps each time. That removes the need to manually copy and reshape the new month before reporting can begin.",
+
+            image:
+              "assets/images/projects/automated-monthly-sales-power-query.png",
+
+            alt: "Power Query workflow used to combine and transform monthly sales files",
+          },
+
+          {
+            eyebrow: "02 / Connect",
+
+            title: "One model keeps the numbers connected.",
+
+            text: "Sales, dates, products, customers, branches, sales representatives, targets and expenses are organised into a connected model. This gives the workbook one consistent foundation instead of separate calculations being rebuilt in different sheets.",
+
+            image: "assets/images/projects/automated-monthly-sales-model.png",
+
+            alt: "Excel Power Pivot data model connecting sales, date, product, customer, branch, target and expense tables",
+          },
+
+          {
+            eyebrow: "03 / Calculate",
+
+            title: "Reusable reporting tables respond to the same filters.",
+
+            text: "The model feeds reusable PivotTables for sales, profit, branches, products, channels and month-on-month performance. These supporting tables update with the dashboard selections and provide a controlled layer behind the report visuals.",
+
+            image: "assets/images/projects/automated-monthly-sales-pivots.png",
+
+            alt: "Model PivotTables supporting the automated monthly sales dashboard",
+          },
+
+          {
+            eyebrow: "04 / Communicate",
+
+            title:
+              "Management gets a report that explains the month, not just the numbers.",
+
+            text: "The management report compares the selected period with the prior month, shows the variance and status for key measures, and adds a short performance commentary. It gives decision-makers a printable summary alongside the interactive dashboard.",
+
+            image: "assets/images/projects/automated-monthly-sales-report.png",
+
+            alt: "Monthly management report comparing selected period, prior period, variance and performance status",
+          },
+        ],
+
+        outcomes: [
+          {
+            icon: "refresh-cw",
+            title: "Faster month-end updates",
+            text: "The process is designed around adding the new file and refreshing the existing reporting system instead of rebuilding it.",
+          },
+
+          {
+            icon: "shield-check",
+            title: "More consistent numbers",
+            text: "Dashboard, pivots and management reporting are driven from the same connected model and KPI logic.",
+          },
+
+          {
+            icon: "chart-no-axes-combined",
+            title: "Clearer performance visibility",
+            text: "Sales, profit, margin, targets, orders and branch performance can be reviewed together instead of across disconnected sheets.",
+          },
+
+          {
+            icon: "file-text",
+            title: "A management-ready output",
+            text: "The same workflow supports both an interactive dashboard and a concise monthly report for review or distribution.",
+          },
+        ],
+
+        workflow: [
+          {
+            title: "Add the new month",
+            text: "Place the latest sales file in the reporting folder using the agreed file structure.",
+          },
+
+          {
+            title: "Refresh the workbook",
+            text: "Power Query imports the files and applies the existing transformation steps automatically.",
+          },
+
+          {
+            title: "Update the model",
+            text: "The connected model and reporting tables recalculate the measures from the refreshed data.",
+          },
+
+          {
+            title: "Review and share",
+            text: "The dashboard and monthly management report are ready for performance review and decision-making.",
+          },
+        ],
+
+        demoNote:
+          "Demonstration project built with fictional BluePeak business data. It illustrates the reporting workflow and design approach; the figures do not represent a real company's performance.",
+
+        ctaTitle: "Still rebuilding the same report every month?",
+
+        ctaText:
+          "4Sight Metrics can help turn recurring spreadsheet reporting into a cleaner, repeatable system built around the numbers your team actually uses.",
+
+        ctaLabel: "Discuss your reporting process",
+      },
     },
-    {
-      id: "retail-sales-intelligence",
-      type: "Reporting Systems",
-      title: "Retail Sales Intelligence",
-      shortTitle: "Sales Intelligence",
-      description:
-        "A unified view of sales, profit, customer orders and regional performance for sharper retail decisions.",
-      tags: ["Power BI", "Retail Analytics", "Sales"],
-      theme: "ocean",
 
-      image: "assets/images/projects/retail-practices.webp",
-      imageAlt:
-        "Dark Power BI retail dashboard showing revenue, profit trends, customer orders and regional performance",
-
-      embedUrl:
-        "https://app.powerbi.com/view?r=eyJrIjoiNTY0NWU1MDktOWI3OS00YzJlLThmYmUtZTM5ZTMyNzNmNTU4IiwidCI6IjRiZTBmMTg5LWVkODQtNDhiOC05YTEyLTkwNDFkNWRiYzNhMiJ9",
-    },
     {
       id: "health-fitness-tracker",
       type: "Reporting Systems",
@@ -266,21 +395,22 @@ window.SITE_DATA = {
       embedUrl: "https://admin-dashboard-james-isaac.vercel.app/",
     },
     {
-      id: "supplement-sales-analytics",
+      id: "dca-flight-performance-dashboard",
       type: "Reporting Systems",
-      title: "Supplement Sales Intelligence",
-      shortTitle: "Supplement Sales",
+      category: "Aviation analytics",
+      title: "DCA Flight Performance Dashboard",
+      shortTitle: "Flight Performance",
       description:
-        "A clear view of supplement sales, product demand, returns and marketplace performance.",
-      tags: ["Power BI", "Sales Analytics", "E-commerce"],
+        "An interactive aviation dashboard showing airline reliability, arrival delays, congestion patterns and hourly flight performance for clearer operational monitoring.",
+      tags: ["Power BI", "Aviation Analytics", "Operational Reporting"],
       theme: "aqua",
 
-      image: "assets/images/projects/supplement-sales.webp",
+      image: "assets/images/projects/dca-flight-performance.png",
       imageAlt:
-        "Dark Power BI supplement sales dashboard showing revenue, product demand, returns and marketplace performance",
+        "Power BI flight performance dashboard showing airline delay analysis, reliability scorecards, congestion rankings and hourly performance trends",
 
       embedUrl:
-        "https://app.powerbi.com/view?r=eyJrIjoiY2JmM2I3MmEtNDJjZC00NzBmLWJjZWItNjBjMGI5M2EzNDdhIiwidCI6IjRiZTBmMTg5LWVkODQtNDhiOC05YTEyLTkwNDFkNWRiYzNhMiJ9",
+        "https://app.powerbi.com/view?r=eyJrIjoiODIwMjc2ZmItYTI3ZC00MWQyLTkxYjYtZDc4ZDY3N2U4ZWY2IiwidCI6IjRiZTBmMTg5LWVkODQtNDhiOC05YTEyLTkwNDFkNWRiYzNhMiJ9",
     },
     {
       id: "restaurant-sales-analytics",
@@ -332,6 +462,24 @@ window.SITE_DATA = {
 
       embedUrl:
         "https://app.powerbi.com/view?r=eyJrIjoiZTY4YjM2YTgtNDRhMy00MTgxLWE0NWEtMDQzMTBlYjQyY2E0IiwidCI6IjRiZTBmMTg5LWVkODQtNDhiOC05YTEyLTkwNDFkNWRiYzNhMiJ9",
+    },
+
+    {
+      id: "retail-sales-intelligence",
+      type: "Reporting Systems",
+      title: "Retail Sales Intelligence",
+      shortTitle: "Sales Intelligence",
+      description:
+        "A unified view of sales, profit, customer orders and regional performance for sharper retail decisions.",
+      tags: ["Power BI", "Retail Analytics", "Sales"],
+      theme: "ocean",
+
+      image: "assets/images/projects/retail-practices.webp",
+      imageAlt:
+        "Dark Power BI retail dashboard showing revenue, profit trends, customer orders and regional performance",
+
+      embedUrl:
+        "https://app.powerbi.com/view?r=eyJrIjoiNTY0NWU1MDktOWI3OS00YzJlLThmYmUtZTM5ZTMyNzNmNTU4IiwidCI6IjRiZTBmMTg5LWVkODQtNDhiOC05YTEyLTkwNDFkNWRiYzNhMiJ9",
     },
   ],
 

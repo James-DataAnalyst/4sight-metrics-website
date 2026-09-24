@@ -317,7 +317,7 @@
 
          <span class="project-open" aria-hidden="true">
   ${icon("eye", 16)}
-  <span>View report</span>
+  <span>${project.caseStudy ? "View case study" : "View report"}</span>
 </span>
         </div>
 
@@ -712,6 +712,209 @@
   //   refreshIcons();
   // }
 
+  function renderProjectCaseStudy(project) {
+    const caseStudy = project.caseStudy;
+    if (!caseStudy) return "";
+
+    const outcomes = Array.isArray(caseStudy.outcomes)
+      ? caseStudy.outcomes
+      : [];
+    const workflow = Array.isArray(caseStudy.workflow)
+      ? caseStudy.workflow
+      : [];
+    const gallery = Array.isArray(caseStudy.gallery) ? caseStudy.gallery : [];
+    const heroImage = caseStudy.heroImage || project.image || "";
+    const heroAlt =
+      caseStudy.heroAlt ||
+      project.imageAlt ||
+      `${project.title} project preview`;
+
+    return `
+      <article class="project-case-study">
+        <section class="case-study-hero">
+          <div class="case-study-hero-copy">
+            <span class="case-study-kicker">
+              ${escapeHTML(caseStudy.kicker || "Case study")}
+            </span>
+
+            <h2>${escapeHTML(caseStudy.headline || project.title)}</h2>
+
+            <p>${escapeHTML(caseStudy.intro || project.description)}</p>
+
+            <div class="case-study-hero-tags">
+              ${(project.tags || [])
+                .map((tag) => `<span>${escapeHTML(tag)}</span>`)
+                .join("")}
+            </div>
+          </div>
+
+          <figure class="case-study-hero-visual">
+            <div class="case-study-window-bar" aria-hidden="true">
+              <span><i></i><i></i><i></i></span>
+              <b>Reporting demo</b>
+            </div>
+
+            ${
+              heroImage
+                ? `<img
+                    src="${escapeHTML(heroImage)}"
+                    alt="${escapeHTML(heroAlt)}"
+                    loading="eager"
+                    decoding="async"
+                  />`
+                : ""
+            }
+
+            ${
+              caseStudy.heroCaption
+                ? `<figcaption>${escapeHTML(caseStudy.heroCaption)}</figcaption>`
+                : ""
+            }
+          </figure>
+        </section>
+
+        <div class="case-study-body">
+          <section class="case-study-problem-solution">
+            <article class="case-study-panel">
+              <span>01 / The problem</span>
+              <h3>${escapeHTML(caseStudy.problem?.title || "The reporting challenge")}</h3>
+              <p>${escapeHTML(caseStudy.problem?.text || "")}</p>
+            </article>
+
+            <article class="case-study-panel case-study-panel--accent">
+              <span>02 / The solution</span>
+              <h3>${escapeHTML(caseStudy.solution?.title || "A repeatable reporting system")}</h3>
+              <p>${escapeHTML(caseStudy.solution?.text || "")}</p>
+            </article>
+          </section>
+
+          ${
+            outcomes.length
+              ? `
+                <section class="case-study-section">
+                  <header class="case-study-section-heading">
+                    <span>Business value</span>
+                    <h3>What changes for the team.</h3>
+                  </header>
+
+                  <div class="case-study-outcomes">
+                    ${outcomes
+                      .map(
+                        (outcome) => `
+                          <article>
+                            <span class="case-study-outcome-icon">
+                              ${icon(outcome.icon || "check", 18)}
+                            </span>
+                            <h4>${escapeHTML(outcome.title)}</h4>
+                            <p>${escapeHTML(outcome.text)}</p>
+                          </article>
+                        `,
+                      )
+                      .join("")}
+                  </div>
+                </section>
+              `
+              : ""
+          }
+
+          ${
+            workflow.length
+              ? `
+                <section class="case-study-section case-study-workflow-section">
+                  <header class="case-study-section-heading">
+                    <span>How it works</span>
+                    <h3>One monthly process. No report rebuild.</h3>
+                  </header>
+
+                  <div class="case-study-workflow">
+                    ${workflow
+                      .map(
+                        (step, index) => `
+                          <article>
+                            <span>${String(index + 1).padStart(2, "0")}</span>
+                            <h4>${escapeHTML(step.title)}</h4>
+                            <p>${escapeHTML(step.text)}</p>
+                          </article>
+                        `,
+                      )
+                      .join("")}
+                  </div>
+                </section>
+              `
+              : ""
+          }
+
+          ${
+            gallery.length
+              ? `
+                <section class="case-study-section">
+                  <header class="case-study-section-heading">
+                    <span>Inside the solution</span>
+                    <h3>Built from the data layer to the management view.</h3>
+                  </header>
+
+                  <div class="case-study-gallery">
+                    ${gallery
+                      .map(
+                        (item, index) => `
+                          <article class="case-study-gallery-card">
+                            <div class="case-study-gallery-image">
+                              <img
+                                src="${escapeHTML(item.image)}"
+                                alt="${escapeHTML(item.alt || item.title)}"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
+
+                            <div class="case-study-gallery-copy">
+                              <span>${escapeHTML(
+                                item.eyebrow || `View ${index + 1}`,
+                              )}</span>
+                              <h4>${escapeHTML(item.title)}</h4>
+                              <p>${escapeHTML(item.text)}</p>
+                            </div>
+                          </article>
+                        `,
+                      )
+                      .join("")}
+                  </div>
+                </section>
+              `
+              : ""
+          }
+
+          ${
+            caseStudy.demoNote
+              ? `
+                <p class="case-study-demo-note">
+                  ${escapeHTML(caseStudy.demoNote)}
+                </p>
+              `
+              : ""
+          }
+
+          <section class="case-study-cta">
+            <div>
+              <span>Bring this idea to your reporting process</span>
+              <h3>${escapeHTML(caseStudy.ctaTitle || "Ready to simplify recurring reporting?")}</h3>
+              <p>${escapeHTML(caseStudy.ctaText || "")}</p>
+            </div>
+
+            <a
+              class="button button-primary"
+              href="#contact"
+              data-case-study-contact
+            >
+              ${escapeHTML(caseStudy.ctaLabel || "Start a conversation")}
+              ${icon("arrow-up-right", 17)}
+            </a>
+          </section>
+        </div>
+      </article>
+    `;
+  }
+
   function openProject(projectId) {
     const project = findProject(projectId);
     const modal = $("#project-modal");
@@ -720,12 +923,15 @@
 
     const modalPreview = $("#modal-preview");
     const modalStatus = $("#modal-status");
+    const hasCaseStudy = Boolean(project.caseStudy);
 
     /*
-     * embedUrl takes priority when both properties exist.
-     * Otherwise, the normal url property is used.
+     * Case studies stay inside the website.
+     * Live web apps and Power BI reports keep using the existing iframe viewer.
      */
-    const projectSource = project.embedUrl?.trim() || project.url?.trim() || "";
+    const projectSource = hasCaseStudy
+      ? ""
+      : project.embedUrl?.trim() || project.url?.trim() || "";
 
     const projectUrl = getSafeProjectUrl(projectSource);
 
@@ -735,31 +941,59 @@
     $("#modal-tags").innerHTML = (project.tags || [])
       .map((tag) => `<span>${escapeHTML(tag)}</span>`)
       .join("");
+
     const isPowerBI =
       Boolean(projectUrl) && /^https:\/\/app\.powerbi\.com\//i.test(projectUrl);
 
-    modalPreview.classList.toggle("has-report", Boolean(projectUrl));
+    modal.classList.toggle("has-case-study", hasCaseStudy);
+    modal.classList.toggle(
+      "has-live-project",
+      Boolean(projectUrl) && !hasCaseStudy,
+    );
+    modal.classList.toggle(
+      "has-web-app",
+      Boolean(projectUrl) && !isPowerBI && !hasCaseStudy,
+    );
+    modal.classList.toggle("has-power-bi", isPowerBI && !hasCaseStudy);
 
-    modal.classList.toggle("has-live-project", Boolean(projectUrl));
-    modal.classList.toggle("has-web-app", Boolean(projectUrl) && !isPowerBI);
-    modal.classList.toggle("has-power-bi", isPowerBI);
+    if (hasCaseStudy) {
+      modalPreview.classList.remove("has-report");
+      modalPreview.innerHTML = renderProjectCaseStudy(project);
+      modalPreview.scrollTop = 0;
+      modalStatus.hidden = true;
 
-    if (projectUrl) {
+      $("[data-case-study-contact]", modalPreview)?.addEventListener(
+        "click",
+        (event) => {
+          event.preventDefault();
+          modal.close();
+
+          window.requestAnimationFrame(() => {
+            $("#contact")?.scrollIntoView({
+              behavior: reducedMotion ? "auto" : "smooth",
+              block: "start",
+            });
+          });
+        },
+      );
+    } else if (projectUrl) {
+      modalPreview.classList.add("has-report");
       modalPreview.innerHTML = `
-      <div class="report-embed-shell">
-        <iframe
-          src="${escapeHTML(projectUrl)}"
-          title="${escapeHTML(project.title)} interactive demo"
-          loading="eager"
-          allow="fullscreen"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-      </div>
-    `;
+        <div class="report-embed-shell">
+          <iframe
+            src="${escapeHTML(projectUrl)}"
+            title="${escapeHTML(project.title)} interactive demo"
+            loading="eager"
+            allow="fullscreen"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+      `;
 
       modalStatus.hidden = true;
     } else {
+      modalPreview.classList.remove("has-report");
       modalPreview.innerHTML = dashboardVisual(project, "modal-dashboard");
 
       modalStatus.hidden = false;
@@ -1189,7 +1423,12 @@
     modal.addEventListener("close", () => {
       document.body.classList.remove("modal-open");
 
-      modal.classList.remove("has-live-project", "has-web-app", "has-power-bi");
+      modal.classList.remove(
+        "has-live-project",
+        "has-web-app",
+        "has-power-bi",
+        "has-case-study",
+      );
 
       if (modalPreview) {
         modalPreview.innerHTML = "";
